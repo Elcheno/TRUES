@@ -11,8 +11,13 @@ public class Test1 {
         EmployeeDAO employeeDAO = new EmployeeDAO();
 
         List<Employee> employees = employeeDAO.findAll();
-        for (Employee employee : employees) {
-            System.out.println(employee);
+        for(Employee e : employees) {
+            System.out.println(e.toString());
         }
+
+
+        System.out.println("=====================================");
+        Employee employee1 = (Employee) employeeDAO.findById(1);
+        System.out.println(employee1.toString());
     }
 }

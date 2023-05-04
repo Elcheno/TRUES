@@ -1,7 +1,6 @@
 module com.elcheno.trues {
     requires javafx.controls;
     requires javafx.fxml;
-            
     requires org.controlsfx.controls;
     requires java.xml.bind;
     requires java.sql;
