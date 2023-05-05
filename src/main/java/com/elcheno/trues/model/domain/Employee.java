@@ -1,5 +1,7 @@
 package com.elcheno.trues.model.domain;
 
+import com.elcheno.trues.model.dto.EmpLineDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 

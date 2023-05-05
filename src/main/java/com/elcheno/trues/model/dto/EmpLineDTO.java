@@ -1,4 +1,6 @@
-package com.elcheno.trues.model.domain;
+package com.elcheno.trues.model.dto;
+
+import com.elcheno.trues.model.domain.Line;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

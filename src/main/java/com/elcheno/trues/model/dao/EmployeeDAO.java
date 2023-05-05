@@ -32,7 +32,7 @@ public class EmployeeDAO implements iDAO<Employee>{
     }
 
     /**
-     * Method to close the connection to the database
+     * Method to find all employees to the database
      * @return List of all employees
      * @throws SQLException
      */
@@ -98,8 +98,9 @@ public class EmployeeDAO implements iDAO<Employee>{
                     pst.setString(2, entity.getDni());
                     pst.setString(3, entity.getName());
                     pst.setString(4, entity.getLastName());
-                    pst.executeUpdate();
-                    result= true;
+                    if(pst.executeUpdate()==1){
+                        result= true;
+                    }
                 }
             }else{
                 //UPDATE
@@ -109,8 +110,9 @@ public class EmployeeDAO implements iDAO<Employee>{
                     pst.setString(3, entity.getName());
                     pst.setString(4, entity.getLastName());
                     pst.setInt(5, aux.getId());
-                    pst.executeUpdate();
-                    result= true;
+                    if(pst.executeUpdate()==1){
+                        result= true;
+                    }
                 }
             }
         }
@@ -129,8 +131,9 @@ public class EmployeeDAO implements iDAO<Employee>{
         if(entity!=null && entity.getId()!=0){
             try(PreparedStatement pst = this.conn.prepareStatement(DELETE)){
                 pst.setInt(1, entity.getId());
-                pst.executeUpdate();
-                result= true;
+                if(pst.executeUpdate()==1){
+                    result= true;
+                }
             }
         }
         return result;

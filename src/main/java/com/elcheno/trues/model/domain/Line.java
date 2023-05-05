@@ -1,5 +1,7 @@
 package com.elcheno.trues.model.domain;
 
+import com.elcheno.trues.model.dto.LineEmpDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +20,9 @@ public class Line {
     public Line(String description){
         this.description = description;
         products = new ArrayList<>();
+    }
+    public Line(){
+        this("");
     }
 
     //GETTER AND SETTER
@@ -67,5 +72,13 @@ public class Line {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    //TOSTRING
+    @Override
+    public String toString() {
+        return "Line{" +
+                "description='" + description + '\'' +
+                '}';
     }
 }
