@@ -48,6 +48,7 @@ public class EmployeeDAO implements iDAO<Employee>{
                     aux.setDni(res.getString("dni"));
                     aux.setName(res.getString("_name"));
                     aux.setLastName(res.getString("lastname"));
+                    aux.setEmpLinesDTO(null);
                     result.add(aux);
                 }
             }
@@ -74,6 +75,7 @@ public class EmployeeDAO implements iDAO<Employee>{
                     result.setDni(res.getString("dni"));
                     result.setName(res.getString("_name"));
                     result.setLastName(res.getString("lastname"));
+                    result.setEmpLinesDTO(null);
                 }
             }
         }

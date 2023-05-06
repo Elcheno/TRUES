@@ -1,7 +1,9 @@
 package com.elcheno.trues.model.domain;
 
 import com.elcheno.trues.model.dto.LineEmpDTO;
+import com.elcheno.trues.model.service.ProductService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -50,6 +52,14 @@ public class Line {
         }
     }
     public List<Product> getProducts() {
+        if(products == null){
+            try {
+                ProductService productService = new ProductService();
+                products = productService.getByIdLine(id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return products;
     }
     public void setProducts(List<Product> products) {
@@ -79,6 +89,7 @@ public class Line {
     public String toString() {
         return "Line{" +
                 "description='" + description + '\'' +
+                "products='" + products + '\'' +
                 '}';
     }
 }

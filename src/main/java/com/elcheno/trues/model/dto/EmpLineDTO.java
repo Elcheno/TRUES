@@ -4,24 +4,28 @@ import com.elcheno.trues.model.domain.Line;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.TemporalAmount;
 import java.util.Objects;
 
 public class EmpLineDTO {
     /**
-     * EmpLine Class
+     * EmpLineDTO Class
      * @author Elcheno
      */
     private Line line;
     private LocalDate date;
-    private LocalTime date_e;
-    private LocalTime date_s;
+    private LocalTime date_in;
+    private LocalTime date_out;
 
     //CONSTRUCT
-    public EmpLineDTO(Line line, LocalDate date, LocalTime date_e, LocalTime date_s) {
+    public EmpLineDTO(Line line, LocalDate date, LocalTime date_in, LocalTime date_out) {
         this.line = line;
         this.date = date;
-        this.date_e = date_e;
-        this.date_s = date_s;
+        this.date_in = date_in;
+        this.date_out = date_out;
+    }
+    public EmpLineDTO(){
+        this(null, null, null, null);
     }
 
     //GETTER AND SETTER
@@ -37,17 +41,17 @@ public class EmpLineDTO {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    public LocalTime getDate_e() {
-        return date_e;
+    public LocalTime getDateIn() {
+        return date_in;
     }
-    public void setDate_e(LocalTime date_e) {
-        this.date_e = date_e;
+    public void setDateIn(LocalTime date_in) {
+        this.date_in = date_in;
     }
-    public LocalTime getDate_s() {
-        return date_s;
+    public LocalTime getDateOut() {
+        return date_out;
     }
-    public void setDate_s(LocalTime date_s) {
-        this.date_s = date_s;
+    public void setDateOut(LocalTime date_out) {
+        this.date_out = date_out;
     }
 
     //EQUALS AND HASHCODE
@@ -56,10 +60,10 @@ public class EmpLineDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EmpLineDTO that = (EmpLineDTO) o;
-        return Objects.equals(line, that.line) && Objects.equals(date, that.date) && Objects.equals(date_e, that.date_e) && Objects.equals(date_s, that.date_s);
+        return Objects.equals(line, that.line) && Objects.equals(date, that.date) && Objects.equals(date_in, that.date_in) && Objects.equals(date_out, that.date_out);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(line, date, date_e, date_s);
+        return Objects.hash(line, date, date_in, date_out);
     }
 }

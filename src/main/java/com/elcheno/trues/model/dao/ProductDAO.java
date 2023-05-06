@@ -19,6 +19,7 @@ public class ProductDAO implements iDAO<Product>{
 
     private final static String FINDALL = "SELECT * FROM product";
     private final static String FINDBYID = "SELECT * FROM product WHERE id = ?";
+    private final static String FINDBYIDLINE = "SELECT * FROM product WHERE id_line = ?";
     private final static String INSERT = "INSERT INTO product (cod, _description, id_line, date_p) VALUES (?,?,?,?)";
     private final static String UPDATE = "UPDATE product SET cod = ?, _description = ?, id_line = ?, date_p = ? WHERE id = ?";
     private final static String DELETE = "DELETE FROM product WHERE id = ?";
@@ -85,6 +86,39 @@ public class ProductDAO implements iDAO<Product>{
         return result;
     }
 
+    /**
+     * Method to find a product by id_line to the database
+     * @param id id_line of the product
+     * @return List of products
+     * @throws SQLException
+     */
+    public List<Product> findByIdLine(int id) throws SQLException {
+        List<Product> result = new ArrayList<>();
+        if(id>0){
+            try(PreparedStatement pst = this.conn.prepareStatement(FINDBYIDLINE)){
+                pst.setInt(1,id);
+                try(ResultSet res = pst.executeQuery()){
+                    while(res.next()){
+                        Product aux = new Product();
+                        aux.setId(res.getInt("id"));
+                        aux.setCod(res.getInt("cod"));
+                        aux.setDescription(res.getString("_description"));
+                        aux.setLine(this.lineService.getById(res.getInt("id_line")));
+                        aux.setDate(res.getDate("date_p").toLocalDate());
+                        result.add(aux);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Method to find a product by id line to the database
+     * @param entity id line of the product
+     * @return true if the product was found
+     * @throws SQLException
+     */
     @Override
     public boolean save(Product entity) throws SQLException {
         boolean result = false;
@@ -118,6 +152,12 @@ public class ProductDAO implements iDAO<Product>{
         return result;
     }
 
+    /**
+     * Method to delete a product by id to the database
+     * @param entity id of the product
+     * @return true if the product was deleted
+     * @throws SQLException
+     */
     @Override
     public boolean delete(Product entity) throws SQLException {
         boolean result = false;

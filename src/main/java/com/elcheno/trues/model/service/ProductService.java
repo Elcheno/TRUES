@@ -28,6 +28,10 @@ public class ProductService {
         return productDAO.findById(id);
     }
 
+    public List<Product> getByIdLine(int idLine) throws SQLException {
+        return productDAO.findByIdLine(idLine);
+    }
+
     public boolean save(Product product) throws SQLException {
         return productDAO.save(product);
     }

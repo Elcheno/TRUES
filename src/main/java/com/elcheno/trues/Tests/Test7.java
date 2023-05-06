@@ -35,29 +35,29 @@ public class Test7 {
             System.err.println(e.getMessage());
         }
 
-        System.out.println("--------------------------------------------------");
-
-        try {
-            Product aux = new Product();
-            aux.setId(3);
-            aux.setCod(3421);
-            aux.setDescription("Product3");
-            aux.setLine(lineService.getById(1));
-            aux.setDate(java.time.LocalDate.now());
-            System.out.println(productService.save(aux));
-        } catch (SQLException e) {
-            System.out.println("Error al buscar la Linea");
-            System.err.println(e.getMessage());
-        }
-
-        System.out.println("--------------------------------------------------");
-
-        try {
-            Product aux = productService.getById(3);
-            System.out.println(productService.remove(aux));
-        } catch (SQLException e) {
-            System.out.println("Error al buscar el producto");
-            System.err.println(e.getMessage());
-        }
+//        System.out.println("--------------------------------------------------");
+//
+//        try {
+//            Product aux = new Product();
+//            aux.setId(3);
+//            aux.setCod(3421);
+//            aux.setDescription("Product3");
+//            aux.setLine(lineService.getById(1));
+//            aux.setDate(java.time.LocalDate.now());
+//            System.out.println(productService.save(aux));
+//        } catch (SQLException e) {
+//            System.out.println("Error al buscar la Linea");
+//            System.err.println(e.getMessage());
+//        }
+//
+//        System.out.println("--------------------------------------------------");
+//
+//        try {
+//            Product aux = productService.getById(3);
+//            System.out.println(productService.remove(aux));
+//        } catch (SQLException e) {
+//            System.out.println("Error al buscar el producto");
+//            System.err.println(e.getMessage());
+//        }
     }
 }

@@ -23,6 +23,9 @@ public class LineEmpDTO {
         this.date_e = date_e;
         this.date_s = date_s;
     }
+    public LineEmpDTO(){
+        this(null, null, null, null);
+    }
 
     //GETTER AND SETTER
     public Employee getEmployee() {

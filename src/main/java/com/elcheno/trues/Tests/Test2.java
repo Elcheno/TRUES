@@ -9,11 +9,11 @@ public class Test2 {
     public static void main(String[] args) {
         EmployeeDAO employeeDAO = new EmployeeDAO();
         Employee aux = new Employee();
-        aux.setId(5);
+//        aux.setId(5);
         aux.setCod(6789);
         aux.setDni("12345678D");
-        aux.setName("Empleado5");
-        aux.setLastName("Apellido");
+        aux.setName("Manolo");
+        aux.setLastName("Ruiz");
         try {
             System.out.println(employeeDAO.save(aux));
         } catch (SQLException e) {
