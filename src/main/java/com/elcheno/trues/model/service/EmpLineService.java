@@ -23,4 +23,11 @@ public class EmpLineService {
         return empLineDAO.findAll(e);
     }
 
+    public EmpLineDTO getByPK(EmpLineDTO entityDTO, int id) throws SQLException {
+        return empLineDAO.findByPK(entityDTO, id);
+    }
+
+    public boolean save(EmpLineDTO entityDTO, Employee entityEmp) throws SQLException {
+        return empLineDAO.save(entityDTO, entityEmp);
+    }
 }
