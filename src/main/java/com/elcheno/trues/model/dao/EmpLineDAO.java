@@ -3,6 +3,7 @@ package com.elcheno.trues.model.dao;
 import com.elcheno.trues.model.connections.ConnectionMySQL;
 import com.elcheno.trues.model.domain.Employee;
 import com.elcheno.trues.model.dto.EmpLineDTO;
+import com.elcheno.trues.model.service.EmployeeService;
 import com.elcheno.trues.model.service.LineService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,6 +22,7 @@ public class EmpLineDAO implements iDAOdto<EmpLineDTO, Employee>{
 
     private final static String FINDBYID = "SELECT id_line, _date, date_in, date_out FROM emp_line WHERE id_emp = ?";
     private final static String FINDBYPK = "SELECT id_line, _date, date_in, date_out FROM emp_line WHERE id_emp = ? AND id_line = ? AND _date = ? AND date_in = ?";
+    private final static String FINDBYLINE = "SELECT id_emp, _date, date_in, date_out FROM emp_line WHERE id_line = ? AND date_out IS NULL";
     private final static String INSERT = "INSERT INTO emp_line (id_emp, id_line, _date, date_in, date_out) VALUES (?, ?, ?, ?, ?)";
     private final static String UPDATE = "UPDATE emp_line SET date_out = ? WHERE id_emp = ? AND id_line = ? AND _date = ? AND date_in = ?";
 
@@ -88,6 +90,24 @@ public class EmpLineDAO implements iDAOdto<EmpLineDTO, Employee>{
                         if(res.getTime("date_out") != null){
                             result.setDateOut(res.getTime("date_out").toLocalTime());
                         }
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    public List<Employee> findEmpByLine(int idLine) throws SQLException {
+        List<Employee> result = null;
+        if(idLine > 0){
+            EmployeeService employeeService = new EmployeeService();
+            try(PreparedStatement pst = this.conn.prepareStatement(FINDBYLINE)){
+                pst.setInt(1, idLine);
+                try(ResultSet res = pst.executeQuery()){
+                    result = new ArrayList<>();
+                    while(res.next()){
+                        Employee aux = employeeService.getById(res.getInt("id_emp"));
+                        result.add(aux);
                     }
                 }
             }

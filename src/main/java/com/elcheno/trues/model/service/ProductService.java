@@ -32,6 +32,10 @@ public class ProductService {
         return productDAO.findByIdLine(idLine);
     }
 
+    public List<Product> getByIdLineDateNow(int idLine) throws SQLException {
+        return productDAO.findByIdLineDateNow(idLine);
+    }
+
     public boolean save(Product product) throws SQLException {
         return productDAO.save(product);
     }

@@ -1,0 +1,82 @@
+.body{
+    -fx-background-color: #9CDDE3;
+}
+
+.pane{
+    -fx-background-color: #E3FDFD;
+    -fx-background-radius: 5px;
+}
+
+.btnNav{
+    -fx-background-color: #017D9E;
+}
+
+.btnNav:hover{
+    -fx-background-color: #005A5A;
+    -fx-font-weight: bold;
+}
+
+.paneTitle{
+    -fx-background-color: #005A5A;
+}
+
+.paneSubTitle{
+    -fx-background-color: #A2C2C2;
+}
+
+.colorTextSubTitle{
+    -fx-text-fill: #005A5A;
+}
+
+.paneNavTop{
+    -fx-background-color: #F6F3F3;
+}
+
+.btnExit{
+    -fx-text-fill: #a80000;
+    -fx-background-color: transparent;
+    -fx-border-color: #a80000;
+    -fx-border-width: 2px;
+    -fx-border-radius: 100px;
+    -fx-padding: 5px;
+}
+
+.btnExit:hover{
+    -fx-background-color: #a80000;
+    -fx-background-radius: 100px;
+    -fx-text-fill: black;
+}
+
+.btnMin{
+    -fx-text-fill: #ff7e24;
+    -fx-border-color: #ff7e24;
+    -fx-border-width: 2px;
+    -fx-border-radius: 100px;
+    -fx-padding: 5px;
+    -fx-background-color: transparent;
+}
+
+.btnMin:hover{
+    -fx-background-color: #ff7e24;
+    -fx-background-radius: 100px;
+    -fx-text-fill: black;
+}
+
+.btnRefresh{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../img/Icon-refresh.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.btnRefresh:hover{
+    -fx-background-image: url("../img/Icon-refresh-hover.png");
+}
+
+.btnEmpLine{
+    -fx-background-image: url("../img/Icon-user.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}

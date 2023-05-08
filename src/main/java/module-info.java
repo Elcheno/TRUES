@@ -8,4 +8,6 @@ module com.elcheno.trues {
     opens com.elcheno.trues to javafx.fxml;
     exports com.elcheno.trues;
     opens com.elcheno.trues.model.connections to java.xml.bind;
+    exports com.elcheno.trues.controller;
+    opens com.elcheno.trues.controller to javafx.fxml;
 }

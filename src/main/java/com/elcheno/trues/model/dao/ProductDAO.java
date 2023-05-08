@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
 
 public class ProductDAO implements iDAO<Product>{
     /**
@@ -20,6 +21,7 @@ public class ProductDAO implements iDAO<Product>{
     private final static String FINDALL = "SELECT * FROM product";
     private final static String FINDBYID = "SELECT * FROM product WHERE id = ?";
     private final static String FINDBYIDLINE = "SELECT * FROM product WHERE id_line = ?";
+    private final static String FINDBYIDLINEDATENOW = "SELECT * FROM product WHERE id_line = ? AND date_p = ?";
     private final static String INSERT = "INSERT INTO product (cod, _description, id_line, date_p) VALUES (?,?,?,?)";
     private final static String UPDATE = "UPDATE product SET cod = ?, _description = ?, id_line = ?, date_p = ? WHERE id = ?";
     private final static String DELETE = "DELETE FROM product WHERE id = ?";
@@ -110,6 +112,28 @@ public class ProductDAO implements iDAO<Product>{
                 }
             }
         }
+        return result;
+    }
+
+    public List<Product> findByIdLineDateNow(int id) throws SQLException {
+        List<Product> result = null;
+        if(id > 0)
+            try(PreparedStatement pst = this.conn.prepareStatement(FINDBYIDLINEDATENOW)){
+                pst.setInt(1, id);
+                pst.setDate(2, Date.valueOf(java.time.LocalDate.now()));
+                try(ResultSet res = pst.executeQuery()){
+                    result = new ArrayList<>();
+                    while(res.next()){
+                        Product aux = new Product();
+                        aux.setId(res.getInt("id"));
+                        aux.setCod(res.getInt("cod"));
+                        aux.setDescription(res.getString("_description"));
+                        aux.setLine(this.lineService.getById(res.getInt("id_line")));
+                        aux.setDate(res.getDate("date_p").toLocalDate());
+                        result.add(aux);
+                    }
+                }
+            }
         return result;
     }
 
