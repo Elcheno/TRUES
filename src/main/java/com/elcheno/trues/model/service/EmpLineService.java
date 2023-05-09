@@ -31,6 +31,10 @@ public class EmpLineService {
         return empLineDAO.findEmpByLine(id);
     }
 
+    public EmpLineDTO getByEmp(int idEmp, int idLine) throws SQLException {
+        return empLineDAO.findByEmpLine(idEmp, idLine);
+    }
+
     public boolean save(EmpLineDTO entityDTO, Employee entityEmp) throws SQLException {
         return empLineDAO.save(entityDTO, entityEmp);
     }

@@ -42,8 +42,8 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="165.0" />
-                                          <Button fx:id="btnEmpLine" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0">
+                                          <TextField fx:id="fieldTxtEmp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="165.0" />
+                                          <Button fx:id="btnEmpLine" mnemonicParsing="false" onAction="#addEmployeeLine" prefHeight="25.0" prefWidth="30.0">
                                              <styleClass>
                                                 <String fx:value="btnNav" />
                                                 <String fx:value="btnEmpLine" />
@@ -75,11 +75,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="446.0" prefWidth="790.0">
                <children>
-                  <TableView prefHeight="387.0" prefWidth="635.0">
+                  <TableView fx:id="table" prefHeight="387.0" prefWidth="635.0">
                     <columns>
-                      <TableColumn prefWidth="211.0" text="COD" />
-                      <TableColumn prefWidth="211.0" text="NAME" />
-                        <TableColumn prefWidth="211.0" text="LASTNAME" />
+                      <TableColumn fx:id="colCod" prefWidth="211.0" text="COD" />
+                      <TableColumn fx:id="colName" prefWidth="211.0" text="NAME" />
+                        <TableColumn fx:id="colLastname" prefWidth="211.0" text="LASTNAME" />
                     </columns>
                      <HBox.margin>
                         <Insets top="30.0" />
@@ -89,7 +89,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="700.0">
                <children>
-                  <Button fx:id="btnRegresh" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" styleClass="btnRefresh" stylesheets="@style/styleHome.css">
+                  <Button fx:id="btnRegresh" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="25.0" prefWidth="33.0" styleClass="btnRefresh" stylesheets="@style/styleHome.css">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" right="20.0" top="5.0" />
                      </HBox.margin>
@@ -142,7 +142,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="LINES" textFill="WHITE">
+                  <Button fx:id="btnLineView" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="LINE" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </VBox.margin>
@@ -150,7 +150,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="EMPLOYEES" textFill="WHITE">
+                  <Button fx:id="btnEmpView" mnemonicParsing="false" onAction="#employeeView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="EMPLOYEES" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </VBox.margin>
@@ -158,7 +158,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="PRODUCTS" textFill="WHITE">
+                  <Button fx:id="btnProductView" mnemonicParsing="false" onAction="#productView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="PRODUCTS" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </VBox.margin>

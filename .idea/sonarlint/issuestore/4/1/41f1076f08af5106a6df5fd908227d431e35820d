@@ -1,11 +1,9 @@
 
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡“½ýÿÿÿÿ
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡“½ýÿÿÿÿ
-f	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ð€¨œ
-f	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óïïœ
-e	java:S116"QRename this field "date_e" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÉŠw
-k	java:S116"QRename this field "date_s" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü½¦Üüÿÿÿÿ
-h	java:S100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÑµŽýÿÿÿÿ
-c	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ð€¨œ
-c	java:S100."NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©‡íé
-c	java:S1001"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óïïœ
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì†ÔÅøÿÿÿÿ8äÖŠúÿ0
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì†ÔÅøÿÿÿÿ8åÖŠúÿ0
+m	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õº“ß8æÖŠúÿ0
+l	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è¬Íc8æÖŠúÿ0
+n	java:S116"RRename this field "date_in" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä¹Û¯8üÖŠúÿ0
+t	java:S116"SRename this field "date_out" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È“Žÿÿÿÿÿ8üÖŠúÿ0
+`
+java:S1128">Remove this unused import 'java.time.temporal.TemporalAmount'.(©¡”»üÿÿÿÿ8Ž×Šúÿ0

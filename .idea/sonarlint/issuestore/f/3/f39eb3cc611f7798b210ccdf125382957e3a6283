@@ -1,13 +1,19 @@
 
-—
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(©éÑr
-`
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ùø¡¡úÿÿÿÿ
-`
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(îŒúÿÿÿÿ
-`
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(©«äÚıÿÿÿÿ
-[
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÒÁ
-[
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(äÖú¸
+c
+java:S11923"FDefine a constant instead of duplicating this literal "_name" 3 times.(ÜŠğˆ8¥„¸ûÿ0
+f
+java:S11924"IDefine a constant instead of duplicating this literal "lastname" 3 times.(´¤µñ8¥„¸ûÿ0
+
+java:S1186®"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(©éÑr8Î„¸ûÿ0
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ùø¡¡úÿÿÿÿ8Ó„¸ûÿ0
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(îŒúÿÿÿÿ8Õ„¸ûÿ0
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(œ¢»şÿÿÿÿ8Õ„¸ûÿ0
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(©«äÚıÿÿÿÿ8Ö„¸ûÿ0
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÒÁ8Ö„¸ûÿ0
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(äÖú¸8×„¸ûÿ0

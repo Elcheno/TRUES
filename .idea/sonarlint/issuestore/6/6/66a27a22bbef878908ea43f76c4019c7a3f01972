@@ -1,0 +1,10 @@
+
+q	java:S116"PRename this field "_line" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åˆ€şÿÿÿÿ8îÈş‚€1
+
+java:S1186%"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¸¯•;8ÜÆí‚€1
+k
+java:S1659"IDeclare "btnMinWindow" and all following declarations on a separate line.(ñÚÔñÿÿÿÿÿ8İÆí‚€1
+B
+java:S1659"%Declare "yOffset" on a separate line.(ÔÃ8ºíú‚€1
+K
+java:S1068")Remove this unused "_line" private field.(åˆ€şÿÿÿÿ8€Éş‚€1

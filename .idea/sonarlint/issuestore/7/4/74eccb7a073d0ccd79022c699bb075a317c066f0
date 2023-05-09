@@ -1,0 +1,24 @@
+
+g	java:S112b"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8§βξωÿ0
+g	java:S112n"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8¨βξωÿ0
+g	java:S112z"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8©βξωÿ0
+h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8©βξωÿ0
+h	java:S112›"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8ªβξωÿ0
+q	java:S116"PRename this field "_line" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ε€ώÿÿÿÿ8§γξωÿ0
+k
+java:S1659&"IDeclare "btnMinWindow" and all following declarations on a separate line.(ΊÒΫΣψÿÿÿÿ8ªγξωÿ0
+j
+java:S1659("HDeclare "txtEmployee" and all following declarations on a separate line.(ΡµΜ®όÿÿÿÿ8«γξωÿ0
+B
+java:S1659*"%Declare "yOffset" on a separate line.(ΤΓ8¬γξωÿ0
+Z	java:S106a"9Replace this use of System.out or System.err by a logger.(οω――ϋÿÿÿÿ8Υγξωÿ0
+Z	java:S106m"9Replace this use of System.out or System.err by a logger.(οω――ϋÿÿÿÿ8Ϋγξωÿ0
+Z	java:S106y"9Replace this use of System.out or System.err by a logger.(οω――ϋÿÿÿÿ8δγξωÿ0
+\
+java:S1155„">Use isEmpty() to check whether the collection is empty or not.(¦¤ΟΔ8ιγξωÿ0
+[	java:S106‰"9Replace this use of System.out or System.err by a logger.(οω――ϋÿÿÿÿ8ογξωÿ0
+a
+java:S1155”">Use isEmpty() to check whether the collection is empty or not.(όΚ „ÿÿÿÿÿ8τγξωÿ0
+[	java:S106"9Replace this use of System.out or System.err by a logger.(οω――ϋÿÿÿÿ8ϊγξωÿ0
+U
+java:S1068"3Remove this unused "employeeService" private field.(Θψαϊÿÿÿÿ8ώγξωÿ0

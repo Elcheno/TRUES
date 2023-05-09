@@ -22,6 +22,7 @@ public class EmpLineDAO implements iDAOdto<EmpLineDTO, Employee>{
 
     private final static String FINDBYID = "SELECT id_line, _date, date_in, date_out FROM emp_line WHERE id_emp = ?";
     private final static String FINDBYPK = "SELECT id_line, _date, date_in, date_out FROM emp_line WHERE id_emp = ? AND id_line = ? AND _date = ? AND date_in = ?";
+    private final static String FINDEMP = "SELECT id_line, _date, date_in, date_out FROM emp_line WHERE id_line = ? AND id_emp = ? AND date_out IS NULL";
     private final static String FINDBYLINE = "SELECT id_emp, _date, date_in, date_out FROM emp_line WHERE id_line = ? AND date_out IS NULL";
     private final static String INSERT = "INSERT INTO emp_line (id_emp, id_line, _date, date_in, date_out) VALUES (?, ?, ?, ?, ?)";
     private final static String UPDATE = "UPDATE emp_line SET date_out = ? WHERE id_emp = ? AND id_line = ? AND _date = ? AND date_in = ?";
@@ -59,6 +60,55 @@ public class EmpLineDAO implements iDAOdto<EmpLineDTO, Employee>{
                             aux.setDateOut(res.getTime("date_out").toLocalTime());
                         }
                         result.add(aux);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    public List<EmpLineDTO> findAllEmp(Employee entity) {
+        List<EmpLineDTO> result = null;
+        if(entity != null && entity.getId() > 0){
+            LineService lineService = new LineService();
+            try(PreparedStatement pst = this.conn.prepareStatement(FINDBYID)){
+                pst.setInt(1, entity.getId());
+                try(ResultSet res = pst.executeQuery()){
+                    result = new ArrayList<>();
+                    while(res.next()){
+                        EmpLineDTO aux = new EmpLineDTO();
+                        aux.setLine(lineService.getById(res.getInt("id_line")));
+                        aux.setDate(res.getDate("_date").toLocalDate());
+                        aux.setDateIn(res.getTime("date_in").toLocalTime());
+                        if(res.getTime("date_out") != null){
+                            aux.setDateOut(res.getTime("date_out").toLocalTime());
+                        }
+                        result.add(aux);
+                    }
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+                throw new RuntimeException(e);
+            }
+        }
+        return result;
+    }
+
+    public EmpLineDTO findByEmpLine(int idEmp, int idLine) throws SQLException {
+        EmpLineDTO result = null;
+        if(idEmp>0 && idLine>0){
+            try(PreparedStatement pst = this.conn.prepareStatement(FINDEMP)){
+                pst.setInt(1, idLine);
+                pst.setInt(2, idEmp);
+                try(ResultSet res = pst.executeQuery()){
+                    if(res.next()){
+                        result = new EmpLineDTO();
+                        result.setLine(new LineService().getById(res.getInt("id_line")));
+                        result.setDate(res.getDate("_date").toLocalDate());
+                        result.setDateIn(res.getTime("date_in").toLocalTime());
+                        if(res.getTime("date_out") != null){
+                            result.setDateOut(res.getTime("date_out").toLocalTime());
+                        }
                     }
                 }
             }
@@ -144,9 +194,9 @@ public class EmpLineDAO implements iDAOdto<EmpLineDTO, Employee>{
                 try(PreparedStatement pst = this.conn.prepareStatement(UPDATE)){
                     pst.setTime(1, Time.valueOf(entityDTO.getDateOut()));
                     pst.setInt(2, entityEmp.getId());
-                    pst.setInt(3, entityDTO.getLine().getId());
-                    pst.setDate(4, Date.valueOf(entityDTO.getDate()));
-                    pst.setTime(5, Time.valueOf(entityDTO.getDateIn()));
+                    pst.setInt(3, aux.getLine().getId());
+                    pst.setDate(4, Date.valueOf(aux.getDate()));
+                    pst.setTime(5, Time.valueOf(aux.getDateIn()));
                     if(pst.executeUpdate() == 1){
                         result = true;
                     }

@@ -1,7 +1,10 @@
 package com.elcheno.trues.model.service;
 
+import com.elcheno.trues.model.dao.EmpLineDAO;
 import com.elcheno.trues.model.dao.EmployeeDAO;
 import com.elcheno.trues.model.domain.Employee;
+import com.elcheno.trues.model.dto.EmpLineDTO;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,6 +26,15 @@ public class EmployeeService {
 
     public Employee getById(int id) throws SQLException {
         return employeeDAO.findById(id);
+    }
+
+    public List<EmpLineDTO> getAllEmpLinesDTO(Employee entity) {
+        EmpLineDAO empLineDAO = new EmpLineDAO();
+        return empLineDAO.findAllEmp(entity);
+    }
+
+    public Employee getByCod(int cod) throws SQLException {
+        return employeeDAO.findByCod(cod);
     }
 
     public boolean save(Employee entity) throws SQLException {

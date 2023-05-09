@@ -10,13 +10,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1000.0" styleClass="body" stylesheets="@style/styleHome.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elcheno.trues.HomeController">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" styleClass="body" stylesheets="@style/styleHome.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elcheno.trues.ProductController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="227.0" layoutY="41.0" prefHeight="711.0" prefWidth="790.0">
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="700.0">
                <children>
-                  <Button fx:id="btnRegresh" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="25.0" prefWidth="33.0" styleClass="btnRefresh" stylesheets="@style/styleHome.css">
+                  <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="25.0" prefWidth="33.0" styleClass="btnRefresh" stylesheets="@style/styleHome.css">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" right="20.0" top="5.0" />
                      </HBox.margin>
@@ -61,7 +61,7 @@
             </Text>
             <VBox alignment="TOP_CENTER" layoutY="240.0" prefHeight="288.0" prefWidth="229.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="HOME" textFill="WHITE">
+                  <Button fx:id="btnHomeView" mnemonicParsing="false" onAction="#homeView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="HOME" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </VBox.margin>
@@ -69,7 +69,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="LINES" textFill="WHITE">
+                  <Button fx:id="btnLineView" mnemonicParsing="false" onAction="#lineView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="LINES" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </VBox.margin>
@@ -77,7 +77,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="EMPLOYEES" textFill="WHITE">
+                  <Button fx:id="btnEmpView" mnemonicParsing="false" onAction="#employeeView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="EMPLOYEES" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </VBox.margin>
@@ -85,7 +85,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="PRODUCTS" textFill="WHITE">
+                  <Button fx:id="btnProductView" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="PRODUCTS" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </VBox.margin>

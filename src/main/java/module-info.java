@@ -10,4 +10,5 @@ module com.elcheno.trues {
     opens com.elcheno.trues.model.connections to java.xml.bind;
     exports com.elcheno.trues.controller;
     opens com.elcheno.trues.controller to javafx.fxml;
+    opens com.elcheno.trues.model.domain to javafx.base;
 }

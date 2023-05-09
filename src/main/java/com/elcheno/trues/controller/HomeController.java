@@ -1,5 +1,6 @@
-package com.elcheno.trues;
+package com.elcheno.trues.controller;
 
+import com.elcheno.trues.App;
 import com.elcheno.trues.model.domain.Employee;
 import com.elcheno.trues.model.domain.Line;
 import com.elcheno.trues.model.domain.Product;
@@ -15,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -60,7 +60,7 @@ public class HomeController {
         reloadLine();
         reloadNLine();
         reloadNEmployee();
-        realoadNProduct();
+        reloadNProduct();
         loadLastEmployee();
         loadLastProduct();
     }
@@ -113,7 +113,7 @@ public class HomeController {
     }
 
     @FXML
-    private void realoadNProduct(){
+    private void reloadNProduct(){
         if(_line != null){
             try {
                 txtProduct.setText(Integer.toString(productService.getByIdLine(_line.getId()).size()));
@@ -145,10 +145,13 @@ public class HomeController {
         if(_line != null){
             try {
                 List<Employee> employeeList = empLineService.getByLine(_line.getId());
-                txtEmpDni.setText(employeeList.get(employeeList.size()-1).getDni());
-                txtEmpName.setText(employeeList.get(employeeList.size()-1).getName());
-                txtEmpLastname.setText(employeeList.get(employeeList.size()-1).getLastName());
+                if(employeeList.size() > 0){
+                    txtEmpDni.setText(employeeList.get(employeeList.size()-1).getDni());
+                    txtEmpName.setText(employeeList.get(employeeList.size()-1).getName());
+                    txtEmpLastname.setText(employeeList.get(employeeList.size()-1).getLastName());
+                }
             } catch (SQLException e) {
+                System.err.println(e.getMessage());
                 throw new RuntimeException(e);
             }
         }
@@ -158,4 +161,15 @@ public class HomeController {
     private void lineView() throws IOException {
         App.setRoot("line");
     }
+
+    @FXML
+    private void employeeView() throws IOException {
+        App.setRoot("employee");
+    }
+
+    @FXML
+    private void productView() throws IOException {
+        App.setRoot("product");
+    }
+
 }

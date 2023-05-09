@@ -18,6 +18,7 @@ public class EmployeeDAO implements iDAO<Employee>{
     //DECLARATION OF QUERYS FOR THE DATABASE
     private final static String FINDALL = "SELECT * FROM employee";
     private final static String FINDBYID = "SELECT * FROM employee WHERE id = ?";
+    private final static String FINDBYCOD = "SELECT * FROM employee WHERE cod = ?";
     private final static String INSERT = "INSERT INTO employee (cod, dni, _name, lastname) VALUES (?, ?, ?, ?)";
     private final static String UPDATE = "UPDATE employee SET cod = ?, dni = ?, _name = ?, lastname = ? WHERE id = ?";
     private final static String DELETE = "DELETE FROM employee WHERE id = ?";
@@ -38,9 +39,10 @@ public class EmployeeDAO implements iDAO<Employee>{
      */
     @Override
     public List findAll() throws SQLException {
-        List<Employee> result = new ArrayList<>();
+        List<Employee> result = null;
         try(PreparedStatement pst = this.conn.prepareStatement(FINDALL)){
             try(ResultSet res = pst.executeQuery()){
+                result = new ArrayList<>();
                 while(res.next()){
                     Employee aux = new Employee();
                     aux.setId(res.getInt("id"));
@@ -76,6 +78,33 @@ public class EmployeeDAO implements iDAO<Employee>{
                     result.setName(res.getString("_name"));
                     result.setLastName(res.getString("lastname"));
                     result.setEmpLinesDTO(null);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Method to find an employee by cod
+     * @param cod cod of the employee
+     * @return Employee with the cod passed by parameter
+     * @throws SQLException
+     */
+    public Employee findByCod(int cod) throws SQLException {
+        Employee result = null;
+        if(cod>0){
+            try(PreparedStatement pst = this.conn.prepareStatement(FINDBYCOD)){
+                pst.setInt(1, cod);
+                try(ResultSet res = pst.executeQuery()){
+                    if(res.next()){
+                        result = new Employee();
+                        result.setId(res.getInt("id"));
+                        result.setCod(res.getInt("cod"));
+                        result.setDni(res.getString("dni"));
+                        result.setName(res.getString("_name"));
+                        result.setLastName(res.getString("lastname"));
+                        result.setEmpLinesDTO(null);
+                    }
                 }
             }
         }

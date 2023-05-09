@@ -2,6 +2,7 @@ package com.elcheno.trues.model.domain;
 
 import com.elcheno.trues.model.dto.EmpLineDTO;
 import com.elcheno.trues.model.service.EmpLineService;
+import com.elcheno.trues.model.service.EmployeeService;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,13 +36,8 @@ public class Employee extends Person{
     }
     public List<EmpLineDTO> getEmpLinesDTO() {
         if(empLinesDTO == null){
-            EmpLineService empLineService = new EmpLineService();
-            try {
-                empLinesDTO = empLineService.getAll(this);
-            } catch (SQLException e) {
-                System.out.println("Error al cargar getEmpLinesDTO");
-                System.err.println(e.getMessage());
-            }
+            EmployeeService employeeService = new EmployeeService();
+            employeeService.getAllEmpLinesDTO(this);
         }
         return empLinesDTO;
     }
