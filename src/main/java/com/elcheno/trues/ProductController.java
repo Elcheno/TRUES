@@ -125,6 +125,37 @@ public class ProductController implements Initializable{
     }
 
     @FXML
+    private void updateProduct(ActionEvent event){
+            try {
+                Product product = selectProduct();
+                if(product!=null){
+                    ProductInfoDTO _prodInfo = ProductInfoDTO.getInstance();
+                    _prodInfo.setProduct(product);
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productSaved.fxml"));
+                    Parent root = fxmlLoader.load();
+
+                    ProductSaveController controller = fxmlLoader.getController();
+                    controller.initAttributtes(productsList);
+
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.initStyle(StageStyle.UNDECORATED);
+                    stage.showAndWait();
+
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+
+            }
+
+
+    }
+
+    @FXML
     private void infoProduct(ActionEvent event){
         Product aux = selectProduct();
         if(aux==null){ return; }

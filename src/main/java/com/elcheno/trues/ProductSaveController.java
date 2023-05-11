@@ -58,6 +58,8 @@ public class ProductSaveController implements Initializable {
         _products = products;
     }
 
+
+
     @FXML
     private void save(ActionEvent event) {
         if(codField.getText().isEmpty() || descField.getText().isEmpty() || codField.getText().matches("[a-zA-Z]+")){

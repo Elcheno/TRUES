@@ -1,0 +1,10 @@
+
+t	java:S116"SRename this field "_product" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë÷Áüüÿÿÿÿ8ªÝÚÍ€1
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•‘ÝŸüÿÿÿÿ8­ÝÚÍ€1
+ž
+java:S1186 "€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¸ñ®Æ8»ÆçÍ€1
+y
+java:S1450"WRemove the "_product" field and declare it as a local variable in the relevant methods.(Ë÷Áüüÿÿÿÿ8¹ÝÚÍ€1
+N
+java:S1068",Remove this unused "_product" private field.(Ë÷Áüüÿÿÿÿ8ÜÝÚÍ€1
