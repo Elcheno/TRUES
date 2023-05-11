@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -14,6 +17,92 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="227.0" layoutY="41.0" prefHeight="711.0" prefWidth="790.0">
          <children>
+            <HBox alignment="CENTER" prefHeight="200.0" prefWidth="790.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="153.0" prefWidth="636.0" styleClass="pane">
+                     <children>
+                        <HBox maxWidth="700.0" prefHeight="153.0" prefWidth="636.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="144.0" prefWidth="212.0">
+                                 <children>
+                                    <Label fx:id="txtProductTotal" text="/">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL PRODUCTS" textAlignment="CENTER" wrappingWidth="91.98828125">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="133.0" prefWidth="212.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="157.0" prefWidth="212.0">
+                                       <children>
+                                          <Button fx:id="btnProdLine" mnemonicParsing="false" onAction="#saveProduct" prefHeight="52.0" prefWidth="52.0">
+                                             <styleClass>
+                                                <String fx:value="btnNav" />
+                                                <String fx:value="btnProdLine" />
+                                             </styleClass>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="133.0" prefWidth="212.0">
+                                 <children>
+                                    <Label fx:id="txtProductToday" text="/">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PRODUCTS TODAY" textAlignment="CENTER" wrappingWidth="101.6552734375">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="790.0">
+               <children>
+                  <Button fx:id="btnInfo" maxHeight="-Infinity" mnemonicParsing="false" onAction="#infoProduct" prefHeight="30.0" prefWidth="41.0">
+                     <styleClass>
+                        <String fx:value="btnNav" />
+                        <String fx:value="btnInfo" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnRemove" maxHeight="-Infinity" mnemonicParsing="false" onAction="#removeProduct" prefHeight="30.0" prefWidth="41.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="85.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="btnNav" />
+                        <String fx:value="btnRemove" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="448.0" prefWidth="790.0">
+               <children>
+                  <TableView fx:id="table" prefHeight="189.0" prefWidth="636.0">
+                    <columns>
+                      <TableColumn fx:id="colCod" prefWidth="144.0" text="COD" />
+                      <TableColumn fx:id="colDesc" prefWidth="489.5" text="DESCRIPTION" />
+                    </columns>
+                  </TableView>
+               </children>
+            </HBox>
             <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="700.0">
                <children>
                   <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="25.0" prefWidth="33.0" styleClass="btnRefresh" stylesheets="@style/styleHome.css">
@@ -69,7 +158,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnLineView" mnemonicParsing="false" onAction="#lineView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="LINES" textFill="WHITE">
+                  <Button fx:id="btnLineView" mnemonicParsing="false" onAction="#lineView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="LINE" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </VBox.margin>

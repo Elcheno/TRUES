@@ -7,6 +7,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class LineDTO {
+    /**
+     * This class is a DTO(Singleton) for the Line class.
+     * @see Line
+     * @see LineService
+     * @author Elcheno
+     */
 
     private static LineDTO _newInstance;
     private static Line _line;

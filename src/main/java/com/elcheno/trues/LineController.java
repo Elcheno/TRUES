@@ -154,7 +154,6 @@ public class LineController implements Initializable {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             throw new RuntimeException(e);
-
         }
 
     }

@@ -1,6 +1,7 @@
 package com.elcheno.trues.model.domain;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Product {
     /**
@@ -14,12 +15,14 @@ public class Product {
     private LocalDate date;
 
     //CONSTRUCT
-    public Product(int cod, String description){
+    public Product(int cod, String description, Line line, LocalDate date){
         this.cod = cod;
         this.description = description;
+        this.line = line;
+        this.date = date;
     }
     public Product(){
-        this(0,"");
+        this(0,"",null,null);
     }
 
     //GETTER AND SETTER
@@ -54,8 +57,20 @@ public class Product {
         this.date = date;
     }
 
-    //TO STRING
+    //EQUALS AND HASHCODE
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return cod == product.cod;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(cod);
+    }
 
+    //TO STRING
     @Override
     public String toString() {
         return "Product{" +

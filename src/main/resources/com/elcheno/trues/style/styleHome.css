@@ -2,6 +2,10 @@
     -fx-background-color: #9CDDE3;
 }
 
+.bodyModal{
+    -fx-background-color: #529296;
+}
+
 .pane{
     -fx-background-color: #E3FDFD;
     -fx-background-radius: 5px;
@@ -14,6 +18,8 @@
 .btnNav:hover{
     -fx-background-color: #005A5A;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, #000000, 10, 0.2, 0, 0);
 }
 
 .paneTitle{
@@ -44,7 +50,8 @@
 .btnExit:hover{
     -fx-background-color: #a80000;
     -fx-background-radius: 100px;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
 }
 
 .btnMin{
@@ -59,7 +66,8 @@
 .btnMin:hover{
     -fx-background-color: #ff7e24;
     -fx-background-radius: 100px;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
 }
 
 .btnRefresh{
@@ -72,6 +80,7 @@
 
 .btnRefresh:hover{
     -fx-background-image: url("../img/Icon-refresh-hover.png");
+    -fx-cursor: hand;
 }
 
 .btnEmpLine{
@@ -80,3 +89,69 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+
+.btnProdLine{
+    -fx-background-image: url("../img/Icon-prod.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-radius: 100px;
+}
+
+.btnProdLine:hover{
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-effect: dropshadow(three-pass-box, #000000, 10, 0.2, 0, 0);
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+.btnSaveProduct{
+    -fx-background-radius: 100px;
+    -fx-background-image: url("../img/Icon-saveProduct.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.btnSaveProduct:hover{
+    -fx-background-color: #54c72d;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.btnCancelProduct{
+    -fx-background-radius: 100px;
+    -fx-background-image: url("../img/Icon-cancelProduct.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.btnCancelProduct:hover{
+    -fx-background-color: #a80000;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.btnRemove{
+    -fx-background-image: url("../img/Icon-removeProduct.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.btnInfo{
+    -fx-background-image: url("../img/Icon-infoProduct.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.btnCloseModal{
+    -fx-background-image: url("../img/Icon-closeModal.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
