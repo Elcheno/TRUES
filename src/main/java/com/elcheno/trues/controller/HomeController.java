@@ -11,16 +11,19 @@ import com.elcheno.trues.model.service.LineService;
 import com.elcheno.trues.model.service.ProductService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class HomeController {
+public class HomeController extends Controller implements Initializable {
     /**
      * This is the controller for the home page
      * @author Elcheno
@@ -41,7 +44,8 @@ public class HomeController {
 
     private double xOffset = 0, yOffset = 0;
 
-    public void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         navbar.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
@@ -53,7 +57,6 @@ public class HomeController {
         });
 
         reloadInfo();
-
     }
 
     public void reloadInfo(){
@@ -63,21 +66,6 @@ public class HomeController {
         reloadNProduct();
         loadLastEmployee();
         loadLastProduct();
-    }
-
-
-    @FXML
-    private void closeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    private void minimizeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.setIconified(true);
     }
 
     @FXML
@@ -156,20 +144,4 @@ public class HomeController {
             }
         }
     }
-
-    @FXML
-    private void lineView() throws IOException {
-        App.setRoot("line");
-    }
-
-    @FXML
-    private void employeeView() throws IOException {
-        App.setRoot("employee");
-    }
-
-    @FXML
-    private void productView() throws IOException {
-        App.setRoot("product");
-    }
-
 }

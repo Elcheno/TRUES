@@ -1,5 +1,6 @@
 package com.elcheno.trues;
 
+import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Product;
 import com.elcheno.trues.model.dto.ProductInfoDTO;
 import javafx.event.ActionEvent;
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProductInfoController implements Initializable {
+public class ProductInfoController extends Controller implements Initializable {
     /**
      * This is the controller for the information view(modal) of the product
      * @see Product
@@ -53,20 +54,6 @@ public class ProductInfoController implements Initializable {
         productDesc.setText(_product.getDescription());
         productLine.setText(Integer.toString(_product.getLine().getId()));
         productDate.setText(_product.getDate().toString());
-    }
-
-    @FXML
-    private void closeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    private void minimizeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.setIconified(true);
     }
 
 }
