@@ -70,13 +70,6 @@ public class Product {
         return Objects.hash(cod);
     }
 
-    public boolean equalsId(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id == product.id;
-    }
-
     //TO STRING
     @Override
     public String toString() {

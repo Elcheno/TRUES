@@ -127,6 +127,7 @@ public class ProductController implements Initializable{
     @FXML
     private void updateProduct(ActionEvent event){
             try {
+                ProductService productService = new ProductService();
                 Product product = selectProduct();
                 if(product!=null){
                     ProductInfoDTO _prodInfo = ProductInfoDTO.getInstance();
@@ -149,9 +150,10 @@ public class ProductController implements Initializable{
                     if(controller.getProduct()!=null){
                         Product aux = controller.getProduct();
                         for(Product p: productsList){
-                            if(p.equalsId(aux)){
-                                p.setCod(aux.getCod());
+                            if(p.equals(aux)){
                                 p.setDescription(aux.getDescription());
+                                productService.save(p);
+                                this.table.refresh();
                                 break;
                             }
                         }
@@ -160,6 +162,8 @@ public class ProductController implements Initializable{
             } catch (IOException e) {
                 throw new RuntimeException(e);
 
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
     }
 

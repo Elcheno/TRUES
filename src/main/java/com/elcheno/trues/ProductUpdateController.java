@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -30,7 +31,9 @@ public class ProductUpdateController implements Initializable {
     @FXML
     private Button btnUpdate;
     @FXML
-    private TextField codField, descField;
+    private TextField descField;
+    @FXML
+    private Label txtCod;
 
     private Product _product;
     private double xOffset = 0, yOffset = 0;
@@ -56,26 +59,25 @@ public class ProductUpdateController implements Initializable {
 
     @FXML
     private void update(){
-        if(codField.getText().isEmpty() || descField.getText().isEmpty()){ return; }
-        int cod = Integer.parseInt(codField.getText());
+        if(descField.getText().isEmpty()){ return; }
         String desc = descField.getText();
-        Product aux = new Product(cod, desc, _product.getLine(), _product.getDate());
+        Product aux = new Product(_product.getCod(), desc, _product.getLine(), _product.getDate());
         aux.setId(_product.getId());
-        if(!_products.contains(aux)){
+        if(!_product.getDescription().equals(aux.getDescription())){
             _product = aux;
             alertInfo("Updated product", "Product updated successfully");
+            Stage stage = (Stage) this.btnUpdate.getScene().getWindow();
+            stage.close();
         }else{
-            alertInfo("Error", "The product already exists");
+            alertInfo("Error", "The product has not changed");
         }
-        Stage stage = (Stage) this.btnUpdate.getScene().getWindow();
-        stage.close();
     }
 
     private void loadTextField(){
         if(ProductInfoDTO.getProduct() != null){
             this._product = ProductInfoDTO.getProduct();
-            codField.setText(String.valueOf(_product.getCod()));
             descField.setText(_product.getDescription());
+            txtCod.setText(Integer.toString(_product.getCod()));
         }
     }
 

@@ -134,6 +134,33 @@
     -fx-scale-y: 1.2;
 }
 
+.btnSaveEmployee{
+    -fx-background-radius: 100px;
+    -fx-background-image: url("../img/Icon-saveEmp.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.btnSaveEmployee:hover{
+    -fx-background-color: #54c72d;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.btnCancelEmployee{
+    -fx-background-radius: 100px;
+    -fx-background-image: url("../img/Icon-cancelEmp.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.btnCancelEmployee:hover{
+    -fx-background-color: #a80000;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
 .btnRemove{
     -fx-background-image: url("../img/Icon-removeProduct.png");
     -fx-background-size: 25px 25px;
@@ -142,7 +169,7 @@
 }
 
 .btnInfo{
-    -fx-background-image: url("../img/Icon-infoProduct.png");
+    -fx-background-image: url("../img/Icon-search.png");
     -fx-background-size: 25px 25px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
@@ -160,5 +187,21 @@
     -fx-background-size: 25px 25px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+}
+
+.btnEmp{
+    -fx-background-image: url("../img/Icon-emp.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-radius: 100px;
+}
+
+.btnEmp:hover{
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-effect: dropshadow(three-pass-box, #000000, 10, 0.2, 0, 0);
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 

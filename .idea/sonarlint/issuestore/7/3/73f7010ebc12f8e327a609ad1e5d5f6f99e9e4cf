@@ -1,0 +1,15 @@
+
+t	java:S116""XRename this field "_employeeList" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬…÷¢8¨š˜Ö€1
+o	java:S116#"TRename this field "_employee" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ‡§U8¨š˜Ö€1
+e
+java:S1659"IDeclare "btnMinWindow" and all following declarations on a separate line.(—£Ý8©š˜Ö€1
+b
+java:S1659"EDeclare "codField" and all following declarations on a separate line.(ž°ÿš8©š˜Ö€1
+B
+java:S1659!"%Declare "yOffset" on a separate line.(ÔžžÃ8©š˜Ö€1
+t
+java:S1450#"XRemove the "_employee" field and declare it as a local variable in the relevant methods.( ‡§U8ªš˜Ö€1
+i
+java:S1128"LRemove this unused import 'com.elcheno.trues.model.service.EmployeeService'.(Œ‰ÉÉ8£øŸÖ€1
+I
+java:S1068#"-Remove this unused "_employee" private field.( ‡§U8·š˜Ö€1

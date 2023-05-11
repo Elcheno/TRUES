@@ -88,7 +88,7 @@
                                  <children>
                                     <VBox layoutY="-1.0" prefHeight="261.0" prefWidth="273.0">
                                        <children>
-                                          <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="99.0" prefWidth="273.0" style="-fx-background-radius: 5;" styleClass="paneSubTitle" stylesheets="@style/styleHome.css">
+                                          <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="96.0" prefWidth="273.0" style="-fx-background-radius: 5;" styleClass="paneSubTitle" stylesheets="@style/styleHome.css">
                                              <children>
                                                 <Text fill="#005a5a" layoutX="91.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMPLOYEE">
                                                    <font>
@@ -161,7 +161,7 @@
                                  <children>
                                     <VBox prefHeight="256.0" prefWidth="273.0">
                                        <children>
-                                          <Pane maxWidth="-Infinity" prefHeight="61.0" prefWidth="273.0" style="-fx-background-radius: 5;" styleClass="paneSubTitle" stylesheets="@style/styleHome.css">
+                                          <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="64.0" prefWidth="273.0" style="-fx-background-radius: 5;" styleClass="paneSubTitle" stylesheets="@style/styleHome.css">
                                              <children>
                                                 <Text fill="#005a5a" layoutX="94.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="colorTextSubTitle" text="PRODUCT">
                                                    <font>
