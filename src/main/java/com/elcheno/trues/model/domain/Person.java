@@ -45,17 +45,17 @@ public class Person {
         this.lastName = lastName;
     }
 
-    //EQUALS AND HASHCODE
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id;
+        return Objects.equals(dni, person.dni);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(dni);
     }
 
     //TOSTRING

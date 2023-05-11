@@ -2,37 +2,38 @@ package com.elcheno.trues;
 
 import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Employee;
-import com.elcheno.trues.model.service.EmployeeService;
+import com.elcheno.trues.model.dto.EmployeeInfoDTO;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EmployeeSaveController extends Controller implements Initializable {
+public class EmployeeUpdateController extends Controller implements Initializable {
     /**
-     * This class is the controller of the EmployeeSaved View(modal)
+     * This class is the controller of the EmployeeUpdate view(modal)
      * @see EmployeeController
      * @author Elcheno
      */
 
     @FXML
-    private Button btnExit, btnMinWindow, btnSave;
-    @FXML
     private Pane navbar;
     @FXML
-    private TextField dniField, codField, nameField, lastnameField;
+    private Label txtEmpDni;
+    @FXML
+    private TextField codField, nameField, lastnameField;
+    @FXML
+    private Button btnUpdate;
 
     private double xOffset = 0, yOffset = 0;
-    private ObservableList<Employee> _employeeList;
-    private Employee _employee;
-    private String templateDNI = "^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$";
+    private ObservableList<Employee> _employeeList; // the employee that is being worked on
+    private Employee _employee; // the employee that is being worked on
     private String templateCod = "[0-9]+";
 
     @Override
@@ -47,59 +48,55 @@ public class EmployeeSaveController extends Controller implements Initializable 
             stage.setY(event.getScreenY() - yOffset);
         });
 
+        loadField();
     }
 
-    public void initAttributtes(ObservableList<Employee> employeeList){
-        this._employeeList = employeeList;
+    public void initAttributes(ObservableList<Employee> employees){
+        this._employeeList = employees;
     }
 
     @FXML
-    private void save() {
+    private void update() {
         if (!areFieldsValid()) {
             return;
         }
 
         if (!isCodFieldValid()) {
             alertInfo("Error", "Employee cannot be saved, check fields");
-            resetField();
+            loadField();
             return;
         }
 
-        String dni = dniField.getText();
-        int cod = Integer.parseInt(codField.getText());
-        String name = nameField.getText();
-        String lastname = lastnameField.getText();
-        Employee aux = new Employee(cod, dni, name, lastname);
+        Employee aux = new Employee(Integer.parseInt(codField.getText()), _employee.getDni(), nameField.getText(), lastnameField.getText());
 
-        if (_employeeList.contains(aux)) {
-            alertInfo("Employee already exists", "The employee already exists");
-            resetField();
-        } else if (!isFieldsValid(aux)) {
-            alertInfo("Error", "Employee cannot be saved, check fields");
-            resetField();
-        } else {
-            _employee = aux;
-            alertInfo("Employee saved", "The employee has been successfully saved");
+        _employee.setDni(aux.getDni());
+        _employee.setName(aux.getName());
+        _employee.setLastName(aux.getLastName());
 
-            Stage stage = (Stage) this.btnSave.getScene().getWindow();
-            stage.close();
-        }
+        Stage stage = (Stage) this.btnUpdate.getScene().getWindow();
+        stage.close();
     }
 
     private boolean areFieldsValid() {
-        return !dniField.getText().isEmpty() && !codField.getText().isEmpty() && !nameField.getText().isEmpty() && !lastnameField.getText().isEmpty();
+        return !codField.getText().isEmpty() && !nameField.getText().isEmpty() && !lastnameField.getText().isEmpty();
     }
 
     private boolean isCodFieldValid() {
         return codField.getText().matches(templateCod);
     }
 
-    private boolean isFieldsValid(Employee emp) {
-        return emp.getDni().matches(templateDNI) && emp.getCod() >= 0 && emp.getCod() <= 9999;
+    @FXML
+    private void loadField(){
+        _employee = EmployeeInfoDTO.getEmployee();
+        if(_employee == null){ return; }
+        txtEmpDni.setText(_employee.getDni());
+        codField.setText(Integer.toString(_employee.getCod()));
+        nameField.setText(_employee.getName());
+        lastnameField.setText(_employee.getLastName());
     }
 
     public Employee getEmployee(){
-        return _employee;
+        return this._employee;
     }
 
     private void alertInfo(String title, String content){
@@ -109,9 +106,8 @@ public class EmployeeSaveController extends Controller implements Initializable 
         alert.setContentText(content);
         alert.showAndWait();
     }
-    
+
     private void resetField(){
-        dniField.setText("");
         codField.setText("");
         nameField.setText("");
         lastnameField.setText("");

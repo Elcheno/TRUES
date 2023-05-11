@@ -1,5 +1,6 @@
 package com.elcheno.trues;
 
+import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Employee;
 import com.elcheno.trues.model.domain.Line;
 import com.elcheno.trues.model.domain.Product;
@@ -33,7 +34,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ProductController implements Initializable{
+public class ProductController extends Controller implements Initializable{
 
     @FXML
     private Button btnExit, btnMinWindow, btnRefresh, btnHomeView, btnProductView, btnLineView, btnEmpView;
@@ -226,6 +227,7 @@ public class ProductController implements Initializable{
         try {
             productsList = FXCollections.observableArrayList(productService.getByIdLine(_line.getId()));
             this.table.setItems(productsList);
+            table.refresh();
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -263,34 +265,4 @@ public class ProductController implements Initializable{
             throw new RuntimeException(e);
         }
     }
-
-    @FXML
-    private void closeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    private void minimizeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    @FXML
-    private void homeView() throws IOException {
-        App.setRoot("home");
-    }
-
-    @FXML
-    private void employeeView() throws IOException {
-        App.setRoot("employee");
-    }
-
-    @FXML
-    private void lineView() throws IOException {
-        App.setRoot("line");
-    }
-
 }

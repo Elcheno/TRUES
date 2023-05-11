@@ -1,8 +1,10 @@
 package com.elcheno.trues;
 
+import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Employee;
 import com.elcheno.trues.model.domain.Line;
 import com.elcheno.trues.model.domain.Product;
+import com.elcheno.trues.model.dto.EmployeeInfoDTO;
 import com.elcheno.trues.model.dto.LineDTO;
 import com.elcheno.trues.model.service.EmpLineService;
 import com.elcheno.trues.model.service.EmployeeService;
@@ -32,7 +34,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class EmployeeController implements Initializable {
+public class EmployeeController extends Controller implements Initializable {
 
     @FXML
     private Button btnExit, btnMinWindow, btnRefresh, btnHomeView, btnProductView, btnLineView, btnEmpView;
@@ -96,6 +98,7 @@ public class EmployeeController implements Initializable {
             aux = employeeService.getAll();
             employeeList.addAll(aux);
             table.setItems(employeeList);
+            table.refresh();
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -141,7 +144,7 @@ public class EmployeeController implements Initializable {
     }
 
     @FXML
-    private void saveEmployee(){
+    private void saveEmployee(ActionEvent event){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employeeSaved.fxml"));
             Parent root = fxmlLoader.load();
@@ -194,31 +197,69 @@ public class EmployeeController implements Initializable {
     }
 
     @FXML
-    private void closeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+    private void infoEmployee(ActionEvent event){
+        Employee employee = selectProduct();
+        EmployeeInfoDTO.getInstance().setEmployee(employee);
+        if(employee==null){ return;}
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employeeInfo.fxml"));
+            Parent root = fxmlLoader.load();
+
+            EmployeeInfoController controller = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
     }
 
     @FXML
-    private void minimizeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.setIconified(true);
-    }
+    private void updateEmployee(ActionEvent event){
+        Employee employee = selectProduct();
+        if(employee==null){ return;}
+        EmployeeInfoDTO.getInstance().setEmployee(employee);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employeeUpdate.fxml"));
+            Parent root = fxmlLoader.load();
 
-    @FXML
-    private void homeView() throws IOException {
-        App.setRoot("home");
-    }
+            EmployeeUpdateController controller = fxmlLoader.getController();
+            controller.initAttributes(employeeList);
 
-    @FXML
-    private void productView() throws IOException {
-        App.setRoot("product");
-    }
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.showAndWait();
 
-    @FXML
-    private void lineView() throws IOException {
-        App.setRoot("line");
+            Employee aux = controller.getEmployee();
+            if(aux!=null){
+                EmployeeService employeeService = new EmployeeService();
+                employeeService.save(aux);
+
+                this.employeeList.add(aux);
+                reloadInfo();
+            }
+
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
+
+        } catch(SQLException e){
+                System.err.println(e.getMessage());
+                throw new RuntimeException(e);
+
+        }
+
     }
 }

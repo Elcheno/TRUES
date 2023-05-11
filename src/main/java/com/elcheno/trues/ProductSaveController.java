@@ -1,5 +1,6 @@
 package com.elcheno.trues;
 
+import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Line;
 import com.elcheno.trues.model.domain.Product;
 import com.elcheno.trues.model.dto.LineDTO;
@@ -18,7 +19,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class ProductSaveController implements Initializable {
+public class ProductSaveController extends Controller implements Initializable {
     /**
      * This is the controller for the save view(modal) of the product
      * @see Product
@@ -62,47 +63,39 @@ public class ProductSaveController implements Initializable {
 
     @FXML
     private void save(ActionEvent event) {
-        if(codField.getText().isEmpty() || descField.getText().isEmpty() || codField.getText().matches("[a-zA-Z]+")){
-            codField.setText("");
-            descField.setText("");
+        String codText = codField.getText();
+        String descText = descField.getText();
+
+        if(codText.isEmpty() || descText.isEmpty() || codText.matches("[a-zA-Z]+")){
+            resetField();
             alertInfo("Error creating product", "Correctly fill in the fields");
             return;
         }
-        int cod = Integer.parseInt(codField.getText());
-        String description = descField.getText();
 
+        int cod = Integer.parseInt(codText);
+        String description = descText;
         Product aux = new Product(cod, description, _line, LocalDate.now());
 
-        if(!_products.contains(aux)){
-            this._product = aux;
-
-            alertInfo("Saved product", "The product has been saved correctly");
-
-            Stage stage = (Stage) this.btnSave.getScene().getWindow();
-            stage.close();
-        }else{
+        if(_products.contains(aux)){
             alertInfo("Error creating product", "The product already exists");
+            return;
         }
+
+        _product = aux;
+        alertInfo("Saved product", "The product has been saved correctly");
+
+        Stage stage = (Stage) this.btnSave.getScene().getWindow();
+        stage.close();
+    }
+
+    private void resetField() {
+        codField.setText("");
+        descField.setText("");
     }
 
     @FXML
     public void reloadLine(){
         _line = LineDTO.getLine();
-    }
-
-    @FXML
-    private void closeWindows(ActionEvent event) {
-        _product = null;
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    private void minimizeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.setIconified(true);
     }
 
     public Product getProduct(){

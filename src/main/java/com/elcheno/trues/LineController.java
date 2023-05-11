@@ -1,5 +1,6 @@
 package com.elcheno.trues;
 
+import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Employee;
 import com.elcheno.trues.model.domain.Line;
 import com.elcheno.trues.model.dto.EmpLineDTO;
@@ -24,7 +25,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
-public class LineController implements Initializable {
+public class LineController extends Controller implements Initializable {
     /**
      * This is the controller for the home page
      * @author Elcheno
@@ -165,34 +166,4 @@ public class LineController implements Initializable {
             txtNLine.setText(Integer.toString(_line.getId()));
         }
     }
-
-    @FXML
-    public void closeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    public void minimizeWindows(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    @FXML
-    public void homeView() throws IOException {
-        App.setRoot("home");
-    }
-
-    @FXML
-    public void employeeView() throws IOException {
-        App.setRoot("employee");
-    }
-
-    @FXML
-    public void productView() throws IOException {
-        App.setRoot("product");
-    }
-
 }

@@ -73,7 +73,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="790.0">
                <children>
-                  <Button fx:id="btnUpdate" maxHeight="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="41.0">
+                  <Button fx:id="btnUpdate" maxHeight="-Infinity" mnemonicParsing="false" onAction="#updateEmployee" prefHeight="30.0" prefWidth="41.0">
                      <styleClass>
                         <String fx:value="btnNav" />
                         <String fx:value="btnUpdate" />
@@ -82,7 +82,7 @@
                         <Insets bottom="5.0" right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnInfo" maxHeight="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="41.0">
+                  <Button fx:id="btnInfo" maxHeight="-Infinity" mnemonicParsing="false" onAction="#infoEmployee" prefHeight="30.0" prefWidth="41.0">
                      <styleClass>
                         <String fx:value="btnNav" />
                         <String fx:value="btnInfo" />
