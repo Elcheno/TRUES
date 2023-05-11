@@ -155,3 +155,10 @@
     -fx-background-position: center;
 }
 
+.btnUpdate{
+    -fx-background-image: url("../img/Icon-updateProduct.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+

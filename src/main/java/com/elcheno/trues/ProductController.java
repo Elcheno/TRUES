@@ -132,10 +132,10 @@ public class ProductController implements Initializable{
                     ProductInfoDTO _prodInfo = ProductInfoDTO.getInstance();
                     _prodInfo.setProduct(product);
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productSaved.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productUpdate.fxml"));
                     Parent root = fxmlLoader.load();
 
-                    ProductSaveController controller = fxmlLoader.getController();
+                    ProductUpdateController controller = fxmlLoader.getController();
                     controller.initAttributtes(productsList);
 
                     Scene scene = new Scene(root);
@@ -146,13 +146,21 @@ public class ProductController implements Initializable{
                     stage.initStyle(StageStyle.UNDECORATED);
                     stage.showAndWait();
 
+                    if(controller.getProduct()!=null){
+                        Product aux = controller.getProduct();
+                        for(Product p: productsList){
+                            if(p.equalsId(aux)){
+                                p.setCod(aux.getCod());
+                                p.setDescription(aux.getDescription());
+                                break;
+                            }
+                        }
+                    }
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
 
             }
-
-
     }
 
     @FXML
