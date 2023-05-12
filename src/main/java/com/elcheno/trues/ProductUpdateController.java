@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProductUpdateController extends Controller implements Initializable {
+public class ProductUpdateController extends Controller {
     /**
      * This is the controller for the update view(modal) of the product
      * @see Product
@@ -35,7 +35,6 @@ public class ProductUpdateController extends Controller implements Initializable
 
     private Product _product;
     private double xOffset = 0, yOffset = 0;
-    private ObservableList<Product> _products; // the list of products to return
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,10 +48,6 @@ public class ProductUpdateController extends Controller implements Initializable
             stage.setY(event.getScreenY() - yOffset);
         });
         loadTextField();
-    }
-
-    public void initAttributtes(ObservableList<Product> _products){
-        this._products = _products;
     }
 
     @FXML

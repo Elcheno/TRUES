@@ -1,0 +1,17 @@
+
+g	java:S1121"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ŞŒÿ€1
+g	java:S112;"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ßŒÿ€1
+g	java:S112E"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ßŒÿ€1
+g	java:S112P"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8àŒÿ€1
+g	java:S112{"FDefine and throw a dedicated exception instead of using a generic one.(¹¸¬™ùÿÿÿÿ8áŒÿ€1
+i
+java:S3655Z"LCall "action.isPresent()" or "!action.isEmpty()" before accessing the value.(‘ï³§8ÿ€1
+p	java:S116"TRename this field "_instance" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä”‚Ø8Î¡¿ÿ€1
+~
+java:S3038"\"initialize" is defined in the "Initializable" interface and can be removed from this class.(‰ æıÿÿÿÿ8«ÿ€1
+Z	java:S1060"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8¹ÿ€1
+Z	java:S106:"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8¾ÿ€1
+Z	java:S106D"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8Áÿ€1
+Z	java:S106O"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8Äÿ€1
+
+java:S1130l"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ô¼¤‰ùÿÿÿÿ8âú˜ÿ€1

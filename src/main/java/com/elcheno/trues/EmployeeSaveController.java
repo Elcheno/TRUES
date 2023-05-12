@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EmployeeSaveController extends Controller implements Initializable {
+public class EmployeeSaveController extends Controller {
     /**
      * This class is the controller of the EmployeeSaved View(modal)
      * @see EmployeeController
@@ -49,7 +49,7 @@ public class EmployeeSaveController extends Controller implements Initializable 
 
     }
 
-    public void initAttributtes(ObservableList<Employee> employeeList){
+    public void initAttributes(ObservableList<Employee> employeeList){
         this._employeeList = employeeList;
     }
 

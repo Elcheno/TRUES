@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EmployeeUpdateController extends Controller implements Initializable {
+public class EmployeeUpdateController extends Controller {
     /**
      * This class is the controller of the EmployeeUpdate view(modal)
      * @see EmployeeController
@@ -32,7 +32,6 @@ public class EmployeeUpdateController extends Controller implements Initializabl
     private Button btnUpdate;
 
     private double xOffset = 0, yOffset = 0;
-    private ObservableList<Employee> _employeeList; // the employee that is being worked on
     private Employee _employee; // the employee that is being worked on
     private String templateCod = "[0-9]+";
 
@@ -49,10 +48,6 @@ public class EmployeeUpdateController extends Controller implements Initializabl
         });
 
         loadField();
-    }
-
-    public void initAttributes(ObservableList<Employee> employees){
-        this._employeeList = employees;
     }
 
     @FXML

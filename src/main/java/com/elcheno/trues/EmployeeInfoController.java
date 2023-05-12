@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EmployeeInfoController extends Controller implements Initializable {
+public class EmployeeInfoController extends Controller {
     /**
      * This class is the controller of the EmployeeInfo view(modal)
      * @see EmployeeController

@@ -19,7 +19,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class ProductSaveController extends Controller implements Initializable {
+public class ProductSaveController extends Controller {
     /**
      * This is the controller for the save view(modal) of the product
      * @see Product

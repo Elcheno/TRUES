@@ -1,9 +1,4 @@
 
-g	java:S112Y"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ù§™‚€1
-g	java:S112e"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ú§™‚€1
-h	java:S112Š"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ú§™‚€1
-h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ú§™‚€1
-h	java:S112œ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ú§™‚€1
 Q
 java:S3740("/Provide the parametrized type for this generic.(˜È“ÿÿÿÿÿ8ú§™‚€1
 Q
@@ -11,11 +6,11 @@ java:S3740("/Provide the parametrized type for this generic.(˜È“ÿÿÿÿÿ8ú§™‚€1
 Q
 java:S3740("/Provide the parametrized type for this generic.(˜È“ÿÿÿÿÿ8ú§™‚€1
 Q
-java:S3740B"/Provide the parametrized type for this generic.(¦¡Ñ¿üÿÿÿÿ8ú§™‚€1
+java:S3740D"/Provide the parametrized type for this generic.(¦¡Ñ¿üÿÿÿÿ8û§™‚€1
 L
-java:S3740C"/Provide the parametrized type for this generic.(¢ØîÃ8û§™‚€1
+java:S3740E"/Provide the parametrized type for this generic.(¢ØîÃ8û§™‚€1
 Q
-java:S3740D"/Provide the parametrized type for this generic.(”­Öûÿÿÿÿ8û§™‚€1
+java:S3740F"/Provide the parametrized type for this generic.(”­Öûÿÿÿÿ8·ğÀù€1
 q	java:S1160"PRename this field "_line" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åˆ€şÿÿÿÿ8¶¨™‚€1
 f
 java:S1659$"IDeclare "btnMinWindow" and all following declarations on a separate line.(’Ñëİ8¸¨™‚€1
@@ -25,14 +20,3 @@ e
 java:S1659,"HDeclare "txtEmployee" and all following declarations on a separate line.(¬“Íõ8¸¨™‚€1
 B
 java:S1659."%Declare "yOffset" on a separate line.(ÔÃ8¸¨™‚€1
-Z	java:S106X"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8È¨™‚€1
-Z	java:S106d"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8Ë¨™‚€1
-d
-java:S1117m"BRename "empLineService" which hides the field declared at line 50.(ÔÏ’÷úÿÿÿÿ8Î¨™‚€1
-h
-java:S2147Œ"ECombine this catch with the one at line 136, which has the same body.(é–³öûÿÿÿÿ8Ï¨™‚€1
-[	java:S106‰"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8Ô¨™‚€1
-[	java:S106"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8Õ¨™‚€1
-e
-java:S1117•"BRename "empLineService" which hides the field declared at line 50.(ÔÏ’÷úÿÿÿÿ8Ö¨™‚€1
-[	java:S106›"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8×¨™‚€1

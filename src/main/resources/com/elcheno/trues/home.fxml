@@ -15,8 +15,7 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="227.0" layoutY="41.0" prefHeight="711.0" prefWidth="790.0">
          <children>
-            <HBox prefHeight="53.0" prefWidth="790.0" />
-            <Pane maxWidth="-Infinity" prefHeight="210.0" prefWidth="636.0" styleClass="pane" stylesheets="@style/styleHome.css">
+            <Pane maxWidth="-Infinity" prefHeight="364.0" prefWidth="636.0" styleClass="pane" stylesheets="@style/styleHome.css">
                <children>
                   <HBox layoutX="-3.0" layoutY="1.0" maxWidth="700.0" prefHeight="133.0" prefWidth="636.0">
                      <children>
@@ -69,9 +68,9 @@
                   <Insets bottom="75.0" left="75.0" right="75.0" top="75.0" />
                </VBox.margin>
             </Pane>
-            <VBox alignment="TOP_CENTER" prefHeight="466.0" prefWidth="786.0">
+            <VBox alignment="TOP_CENTER" prefHeight="631.0" prefWidth="790.0">
                <children>
-                  <Pane maxWidth="-Infinity" prefHeight="67.0" prefWidth="636.0" style="-fx-background-radius: 5;" styleClass="paneTitle" stylesheets="@style/styleHome.css">
+                  <Pane maxWidth="-Infinity" prefHeight="73.0" prefWidth="636.0" style="-fx-background-radius: 5;" styleClass="paneTitle" stylesheets="@style/styleHome.css">
                      <children>
                         <Text fill="WHITE" layoutX="246.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LAST REGISTER">
                            <font>
@@ -209,13 +208,18 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="700.0">
+                  <HBox alignment="TOP_RIGHT" prefHeight="69.0" prefWidth="790.0">
                      <children>
-                        <Button fx:id="btnRegresh" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="25.0" prefWidth="33.0" styleClass="btnRefresh" stylesheets="@style/styleHome.css">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="5.0" right="20.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
+                        <VBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="677.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#config" prefHeight="25.0" prefWidth="31.0" styleClass="btnConfig" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="btnRegresh" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="25.0" prefWidth="33.0" styleClass="btnRefresh" stylesheets="@style/styleHome.css" />
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </children>

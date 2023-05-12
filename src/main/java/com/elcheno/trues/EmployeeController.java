@@ -11,24 +11,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class EmployeeController extends Controller implements Initializable {
+public class EmployeeController extends Controller {
 
     @FXML
     private Button btnExit, btnMinWindow, btnRefresh, btnHomeView, btnProductView, btnLineView, btnEmpView;
@@ -41,6 +37,7 @@ public class EmployeeController extends Controller implements Initializable {
     @FXML
     private Label txtEmpTotal, txtEmpToday, txtNLine;
 
+    private Logger logger;
     private double xOffset = 0, yOffset = 0;
     private Line _line; // the line that is being worked on
     private ObservableList<Employee> employeeList;
@@ -95,8 +92,8 @@ public class EmployeeController extends Controller implements Initializable {
             table.refresh();
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
 
         }
     }
@@ -109,8 +106,8 @@ public class EmployeeController extends Controller implements Initializable {
             txtEmpTotal.setText(Integer.toString(aux.size()));
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
 
         }
     }
@@ -123,8 +120,8 @@ public class EmployeeController extends Controller implements Initializable {
             txtEmpToday.setText(Integer.toString(aux.size()));
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
 
         }
     }
@@ -139,104 +136,76 @@ public class EmployeeController extends Controller implements Initializable {
 
     @FXML
     private void saveEmployee(ActionEvent event){
+        String file = "employeeSaved";
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employeeSaved.fxml"));
-            Parent root = fxmlLoader.load();
-
-            EmployeeSaveController controller = fxmlLoader.getController();
-            controller.initAttributtes(employeeList);
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.showAndWait();
+            Parent root = loadFXML(file);
+            EmployeeSaveController controller = (EmployeeSaveController) getController();
+            controller.initAttributes(employeeList);
+            createModal(root);
 
             Employee aux = controller.getEmployee();
-            if(aux!=null){
-                EmployeeService employeeService = new EmployeeService();
-                employeeService.save(aux);
+            if(aux==null){ return;}
 
-                this.employeeList.add(aux);
-                reloadInfo();
-            }
+            EmployeeService employeeService = new EmployeeService();
+            employeeService.save(aux);
 
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
+            this.employeeList.add(aux);
+            reloadInfo();
 
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
+        } catch (IOException | SQLException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
+
         }
     }
 
     @FXML
     private void removeEmployee(ActionEvent event){
+        EmployeeService employeeService = new EmployeeService();
         Employee employee = selectProduct();
-        if(employee!=null){
-            EmployeeService employeeService = new EmployeeService();
-            try {
-                if(alertConfirmation(Alert.AlertType.CONFIRMATION, "Alert","Are you sure you want to delete this employee?")){
-                    employeeService.remove(employee);
-                    this.employeeList.remove(employee);
-                    reloadInfo();
-                }
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+        if(employee==null){ return;}
 
-            }
+        try {
+            if(!alertConfirmation(Alert.AlertType.CONFIRMATION, "Alert","Are you sure you want to delete this employee?")){ return;}
+            employeeService.remove(employee);
+            this.employeeList.remove(employee);
+            reloadInfo();
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
+
         }
     }
 
     @FXML
     private void infoEmployee(ActionEvent event){
+        String file = "employeeInfo";
         Employee employee = selectProduct();
-        EmployeeInfoDTO.getInstance().setEmployee(employee);
+        EmployeeInfoDTO.setEmployee(employee);
         if(employee==null){ return;}
+
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employeeInfo.fxml"));
-            Parent root = fxmlLoader.load();
-
-            EmployeeInfoController controller = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.showAndWait();
+            Parent root = loadFXML(file);
+            createModal(root);
 
         } catch (IOException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
-        }
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
 
+        }
     }
 
     @FXML
     private void updateEmployee(ActionEvent event){
+        String file = "employeeUpdate";
         Employee employee = selectProduct();
         if(employee==null){ return;}
-        EmployeeInfoDTO.getInstance().setEmployee(employee);
+        EmployeeInfoDTO.setEmployee(employee);
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employeeUpdate.fxml"));
-            Parent root = fxmlLoader.load();
-
-            EmployeeUpdateController controller = fxmlLoader.getController();
-            controller.initAttributes(employeeList);
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.showAndWait();
+            Parent root = loadFXML(file);
+            EmployeeUpdateController controller = (EmployeeUpdateController) getController();
+            createModal(root);
 
             Employee aux = controller.getEmployee();
             if(aux!=null){
@@ -247,16 +216,11 @@ public class EmployeeController extends Controller implements Initializable {
                 reloadInfo();
             }
 
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
-
-        } catch(SQLException e){
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+        } catch (IOException | SQLException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
 
         }
-
     }
 
 }

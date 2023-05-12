@@ -205,3 +205,16 @@
     -fx-cursor: hand;
 }
 
+.btnConfig{
+    -fx-background-image: url("../img/Icon-config.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+}
+
+.btnConfig:hover{
+    -fx-background-image: url("../img/Icon-configHover.png");
+    -fx-cursor: hand;
+}
+
