@@ -62,7 +62,7 @@ public class EmployeeUpdateController extends Controller implements Initializabl
         }
 
         if (!isCodFieldValid()) {
-            alertInfo("Error", "Employee cannot be saved, check fields");
+            alertInformation(Alert.AlertType.INFORMATION, "Error", "Employee cannot be saved, check fields");
             loadField();
             return;
         }
@@ -99,17 +99,4 @@ public class EmployeeUpdateController extends Controller implements Initializabl
         return this._employee;
     }
 
-    private void alertInfo(String title, String content){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setTitle(title);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-
-    private void resetField(){
-        codField.setText("");
-        nameField.setText("");
-        lastnameField.setText("");
-    }
 }

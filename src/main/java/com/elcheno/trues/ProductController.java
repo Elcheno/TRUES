@@ -17,10 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -203,9 +200,11 @@ public class ProductController extends Controller implements Initializable{
         if(product!=null){
             ProductService productService = new ProductService();
             try {
-                productService.remove(product);
-                this.productsList.remove(product);
-                reloadInfo();
+                if(alertConfirmation(Alert.AlertType.CONFIRMATION, "Alert", "Are you sure you want to delete this product?")){
+                    productService.remove(product);
+                    this.productsList.remove(product);
+                    reloadInfo();
+                }
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
                 throw new RuntimeException(e);

@@ -60,7 +60,7 @@ public class EmployeeSaveController extends Controller implements Initializable 
         }
 
         if (!isCodFieldValid()) {
-            alertInfo("Error", "Employee cannot be saved, check fields");
+            alertInformation(Alert.AlertType.INFORMATION, "Error", "Employee cannot be saved, check fields");
             resetField();
             return;
         }
@@ -72,14 +72,14 @@ public class EmployeeSaveController extends Controller implements Initializable 
         Employee aux = new Employee(cod, dni, name, lastname);
 
         if (_employeeList.contains(aux)) {
-            alertInfo("Employee already exists", "The employee already exists");
+            alertInformation(Alert.AlertType.INFORMATION, "Employee already exists", "The employee already exists");
             resetField();
         } else if (!isFieldsValid(aux)) {
-            alertInfo("Error", "Employee cannot be saved, check fields");
+            alertInformation(Alert.AlertType.INFORMATION, "Error", "Employee cannot be saved, check fields");
             resetField();
         } else {
             _employee = aux;
-            alertInfo("Employee saved", "The employee has been successfully saved");
+            alertInformation(Alert.AlertType.INFORMATION, "Employee saved", "The employee has been successfully saved");
 
             Stage stage = (Stage) this.btnSave.getScene().getWindow();
             stage.close();
@@ -102,13 +102,6 @@ public class EmployeeSaveController extends Controller implements Initializable 
         return _employee;
     }
 
-    private void alertInfo(String title, String content){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setTitle(title);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
     
     private void resetField(){
         dniField.setText("");

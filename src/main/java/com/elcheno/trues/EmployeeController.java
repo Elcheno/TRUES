@@ -3,35 +3,29 @@ package com.elcheno.trues;
 import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Employee;
 import com.elcheno.trues.model.domain.Line;
-import com.elcheno.trues.model.domain.Product;
 import com.elcheno.trues.model.dto.EmployeeInfoDTO;
 import com.elcheno.trues.model.dto.LineDTO;
 import com.elcheno.trues.model.service.EmpLineService;
 import com.elcheno.trues.model.service.EmployeeService;
-import com.elcheno.trues.model.service.ProductService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EmployeeController extends Controller implements Initializable {
@@ -185,9 +179,11 @@ public class EmployeeController extends Controller implements Initializable {
         if(employee!=null){
             EmployeeService employeeService = new EmployeeService();
             try {
-                employeeService.remove(employee);
-                this.employeeList.remove(employee);
-                reloadInfo();
+                if(alertConfirmation(Alert.AlertType.CONFIRMATION, "Alert","Are you sure you want to delete this employee?")){
+                    employeeService.remove(employee);
+                    this.employeeList.remove(employee);
+                    reloadInfo();
+                }
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
                 throw new RuntimeException(e);
@@ -262,4 +258,5 @@ public class EmployeeController extends Controller implements Initializable {
         }
 
     }
+
 }

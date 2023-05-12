@@ -59,14 +59,14 @@ public class ProductUpdateController extends Controller implements Initializable
     private void update() {
         String desc = descField.getText();
         if (desc.isEmpty() || desc.equals(_product.getDescription())) {
-            alertInfo("Error", "The product has not changed");
+            alertInformation(Alert.AlertType.INFORMATION, "Error", "The product has not changed");
             loadTextField();
             return;
         }
         Product aux = new Product(_product.getCod(), desc, _product.getLine(), _product.getDate());
         aux.setId(_product.getId());
         _product = aux;
-        alertInfo("Updated product", "Product updated successfully");
+        alertInformation(Alert.AlertType.INFORMATION, "Updated product", "Product updated successfully");
         Stage stage = (Stage) this.btnUpdate.getScene().getWindow();
         stage.close();
     }
@@ -83,11 +83,4 @@ public class ProductUpdateController extends Controller implements Initializable
         return _product;
     }
 
-    private void alertInfo(String title, String content){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setTitle(title);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
 }

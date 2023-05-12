@@ -68,7 +68,7 @@ public class ProductSaveController extends Controller implements Initializable {
 
         if(codText.isEmpty() || descText.isEmpty() || codText.matches("[a-zA-Z]+")){
             resetField();
-            alertInfo("Error creating product", "Correctly fill in the fields");
+            alertInformation(Alert.AlertType.INFORMATION, "Error creating product", "Correctly fill in the fields");
             return;
         }
 
@@ -77,12 +77,12 @@ public class ProductSaveController extends Controller implements Initializable {
         Product aux = new Product(cod, description, _line, LocalDate.now());
 
         if(_products.contains(aux)){
-            alertInfo("Error creating product", "The product already exists");
+            alertInformation(Alert.AlertType.INFORMATION, "Error creating product", "The product already exists");
             return;
         }
 
         _product = aux;
-        alertInfo("Saved product", "The product has been saved correctly");
+        alertInformation(Alert.AlertType.INFORMATION, "Saved product", "The product has been saved correctly");
 
         Stage stage = (Stage) this.btnSave.getScene().getWindow();
         stage.close();
@@ -102,11 +102,4 @@ public class ProductSaveController extends Controller implements Initializable {
         return _product;
     }
 
-    private void alertInfo(String title, String content){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setTitle(title);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
 }
