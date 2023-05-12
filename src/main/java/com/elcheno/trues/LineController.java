@@ -10,22 +10,21 @@ import com.elcheno.trues.model.service.EmployeeService;
 import com.elcheno.trues.model.service.ProductService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class LineController extends Controller implements Initializable {
+public class LineController extends Controller {
     /**
      * This is the controller for the home page
      * @author Elcheno
@@ -47,9 +46,11 @@ public class LineController extends Controller implements Initializable {
     private double xOffset = 0, yOffset = 0;
     private ObservableList<Employee> employeeWorkList;
     private Line _line; // the line that is being worked on
+    private Logger logger;
 
-    private EmpLineService empLineService = new EmpLineService(); // the service to the EmpLine Class
-    private ProductService productService = new ProductService(); // the service to the Product Class
+    private final EmpLineService empLineService = new EmpLineService(); // the service to the EmpLine Class
+    private final ProductService productService = new ProductService(); // the service to the Product Class
+    private final EmployeeService employeeService = new EmployeeService(); // the service to the Employee Class
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -86,8 +87,8 @@ public class LineController extends Controller implements Initializable {
             try {
                 txtEmployee.setText(Integer.toString(empLineService.getByLine(_line.getId()).size()));
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+                logger.log(Level.SEVERE, e.getMessage());
+                exception(e.getMessage());
             }
         }
     }
@@ -98,16 +99,14 @@ public class LineController extends Controller implements Initializable {
             try {
                 txtProduct.setText(Integer.toString(productService.getByIdLine(_line.getId()).size()));
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+                logger.log(Level.SEVERE, e.getMessage());
+                exception(e.getMessage());
             }
         }
     }
 
     @FXML
     public void addEmployeeLine(){
-        EmployeeService employeeService = new EmployeeService();
-        EmpLineService empLineService = new EmpLineService();
         try {
             if(fieldTxtEmp.getText().isEmpty() || !fieldTxtEmp.getText().matches("\\d+")){
                 fieldTxtEmp.setText("");
@@ -134,27 +133,23 @@ public class LineController extends Controller implements Initializable {
             fieldTxtEmp.setText("");
             reloadInfo();
 
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
-
-        } catch (NumberFormatException e){
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
+        } catch (SQLException | NumberFormatException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
 
         }
     }
 
     @FXML
     public void reloadTable(){
-        EmpLineService empLineService = new EmpLineService();
         try {
             employeeWorkList = FXCollections.observableArrayList(empLineService.getByLine(_line.getId()));
             this.table.setItems(employeeWorkList);
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
+            logger.log(Level.SEVERE, e.getMessage());
+            exception(e.getMessage());
+
         }
 
     }

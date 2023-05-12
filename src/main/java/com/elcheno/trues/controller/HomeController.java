@@ -22,8 +22,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class HomeController extends Controller implements Initializable {
+public class HomeController extends Controller {
     /**
      * This is the controller for the home page
      * @author Elcheno
@@ -43,6 +45,7 @@ public class HomeController extends Controller implements Initializable {
     private Label txtNLine, txtEmployee, txtLine, txtProduct, txtEmpName, txtEmpDni, txtEmpLastname, txtProdCod, txtProdDesc;
 
     private double xOffset = 0, yOffset = 0;
+    private Logger logger;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -81,9 +84,11 @@ public class HomeController extends Controller implements Initializable {
         if(_line !=null){
             try {
                 txtLine.setText(Integer.toString(lineService.getAll().size()));
+
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+                logger.log(Level.SEVERE, e.getMessage());
+                exception(e.getMessage());
+
             }
         }
     }
@@ -93,9 +98,11 @@ public class HomeController extends Controller implements Initializable {
         if(_line != null){
             try {
                 txtEmployee.setText(Integer.toString(empLineService.getByLine(_line.getId()).size()));
+
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+                logger.log(Level.SEVERE, e.getMessage());
+                exception(e.getMessage());
+
             }
         }
     }
@@ -105,9 +112,11 @@ public class HomeController extends Controller implements Initializable {
         if(_line != null){
             try {
                 txtProduct.setText(Integer.toString(productService.getByIdLine(_line.getId()).size()));
+
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+                logger.log(Level.SEVERE, e.getMessage());
+                exception(e.getMessage());
+
             }
         }
     }
@@ -117,13 +126,15 @@ public class HomeController extends Controller implements Initializable {
         if(_line != null){
             try {
                 List<Product> productList = productService.getByIdLineDateNow(_line.getId());
-                if(productList.size() > 0){
+                if(!productList.isEmpty()){
                     txtProdCod.setText(Integer.toString(productList.get(productList.size()-1).getCod()));
                     txtProdDesc.setText(productList.get(productList.size()-1).getDescription());
                 }
+
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+                logger.log(Level.SEVERE, e.getMessage());
+                exception(e.getMessage());
+
             }
         }
     }
@@ -133,15 +144,21 @@ public class HomeController extends Controller implements Initializable {
         if(_line != null){
             try {
                 List<Employee> employeeList = empLineService.getByLine(_line.getId());
-                if(employeeList.size() > 0){
+                if(!employeeList.isEmpty()){
                     txtEmpDni.setText(employeeList.get(employeeList.size()-1).getDni());
                     txtEmpName.setText(employeeList.get(employeeList.size()-1).getName());
                     txtEmpLastname.setText(employeeList.get(employeeList.size()-1).getLastName());
                 }
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+                logger.log(Level.SEVERE, e.getMessage());
+                exception(e.getMessage());
+
             }
         }
+    }
+
+    @FXML
+    private void config(){
+
     }
 }

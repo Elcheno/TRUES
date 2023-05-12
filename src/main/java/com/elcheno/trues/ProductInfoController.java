@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProductInfoController extends Controller implements Initializable {
+public class ProductInfoController extends Controller {
     /**
      * This is the controller for the information view(modal) of the product
      * @see Product

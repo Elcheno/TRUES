@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EmployeeUpdateController extends Controller implements Initializable {
+public class EmployeeUpdateController extends Controller {
     /**
      * This class is the controller of the EmployeeUpdate view(modal)
      * @see EmployeeController
@@ -32,7 +32,6 @@ public class EmployeeUpdateController extends Controller implements Initializabl
     private Button btnUpdate;
 
     private double xOffset = 0, yOffset = 0;
-    private ObservableList<Employee> _employeeList; // the employee that is being worked on
     private Employee _employee; // the employee that is being worked on
     private String templateCod = "[0-9]+";
 
@@ -51,10 +50,6 @@ public class EmployeeUpdateController extends Controller implements Initializabl
         loadField();
     }
 
-    public void initAttributes(ObservableList<Employee> employees){
-        this._employeeList = employees;
-    }
-
     @FXML
     private void update() {
         if (!areFieldsValid()) {
@@ -62,7 +57,7 @@ public class EmployeeUpdateController extends Controller implements Initializabl
         }
 
         if (!isCodFieldValid()) {
-            alertInfo("Error", "Employee cannot be saved, check fields");
+            alertInformation(Alert.AlertType.INFORMATION, "Error", "Employee cannot be saved, check fields");
             loadField();
             return;
         }
@@ -99,17 +94,4 @@ public class EmployeeUpdateController extends Controller implements Initializabl
         return this._employee;
     }
 
-    private void alertInfo(String title, String content){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setTitle(title);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-
-    private void resetField(){
-        codField.setText("");
-        nameField.setText("");
-        lastnameField.setText("");
-    }
 }

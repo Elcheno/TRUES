@@ -1,10 +1,12 @@
 
-j	java:S116&"PRename this field "_line" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åˆ€şÿÿÿÿ
-h	java:S116'"SRename this field "_product" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ŸéÄ
-n	java:S116("TRename this field "_products" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ•’…ıÿÿÿÿ
+j	java:S116'"PRename this field "_line" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åˆ€şÿÿÿÿ
+h	java:S116("SRename this field "_product" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ŸéÄ
+n	java:S116)"TRename this field "_products" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ•’…ıÿÿÿÿ
 ^
-java:S1659"IDeclare "btnMinWindow" and all following declarations on a separate line.(—£İ
+java:S1659"IDeclare "btnMinWindow" and all following declarations on a separate line.(—£İ
 =
-java:S1659""'Declare "descField" on a separate line.(¤ÇÅ§
+java:S1659#"'Declare "descField" on a separate line.(¤ÇÅ§
 ;
-java:S1659%"%Declare "yOffset" on a separate line.(ÔÃ
+java:S1659&"%Declare "yOffset" on a separate line.(ÔÃ
+K
+java:S1128".Remove this unused import 'javafx.scene.Node'.(ÑÖ¬ï8û‚Ïù€1

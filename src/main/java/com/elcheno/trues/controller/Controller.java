@@ -1,33 +1,47 @@
 package com.elcheno.trues.controller;
 
 import com.elcheno.trues.App;
-import com.elcheno.trues.model.dto.LineDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class Controller {
+public abstract class Controller implements Initializable {
 
+    private Controller _instance;
+
+
+    public abstract void initialize(URL url, ResourceBundle resourceBundle);
 
     @FXML
-    private void closeWindows(ActionEvent event) {
+    public void closeWindows(ActionEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    private void minimizeWindows(ActionEvent event) {
+    public void minimizeWindows(ActionEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.setIconified(true);
     }
 
     @FXML
-    private void homeView() {
+    public void homeView() {
         try {
             App.setRoot("home");
         } catch (IOException e) {
@@ -37,7 +51,7 @@ public class Controller {
     }
 
     @FXML
-    private void productView() {
+    public void productView() {
         try {
             App.setRoot("product");
         } catch (IOException e) {
@@ -47,7 +61,7 @@ public class Controller {
     }
 
     @FXML
-    private void lineView() {
+    public void lineView() {
         try {
             App.setRoot("line");
         } catch (IOException e) {
@@ -56,8 +70,9 @@ public class Controller {
         }
     }
 
+
     @FXML
-    private void employeeView() {
+    public void employeeView() {
         try {
             App.setRoot("employee");
         } catch (IOException e) {
@@ -66,4 +81,45 @@ public class Controller {
         }
     }
 
+    public boolean alertConfirmation(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setHeaderText(null);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        Optional<ButtonType> action = alert.showAndWait();
+        return action.get() == ButtonType.OK;
+    }
+
+    public void alertInformation(Alert.AlertType alertType, String title, String content){
+        Alert alert = new Alert(alertType);
+        alert.setHeaderText(null);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    public Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Parent root = fxmlLoader.load();
+        _instance = fxmlLoader.getController();
+        return root;
+    }
+
+    public Controller getController()throws IOException{
+        return _instance;
+    }
+
+    public void createModal(Parent root){
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.showAndWait();
+    }
+
+    public void exception(String bar) {
+        throw new RuntimeException(bar);
+    }
 }
