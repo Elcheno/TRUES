@@ -1,16 +1,19 @@
-package com.elcheno.trues;
+package com.elcheno.trues.controller;
 
 import com.elcheno.trues.controller.Controller;
+import com.elcheno.trues.controller.EmployeeController;
 import com.elcheno.trues.model.domain.Employee;
+import com.elcheno.trues.model.dto.EmpLineDTO;
 import com.elcheno.trues.model.dto.EmployeeInfoDTO;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 public class EmployeeInfoController extends Controller {
     /**
@@ -20,7 +23,7 @@ public class EmployeeInfoController extends Controller {
      */
 
     @FXML
-    private Pane navbar;
+    private Pane navbar, state;
     @FXML
     private Label empDni, empCod, empName, empLastname;
 
@@ -50,5 +53,18 @@ public class EmployeeInfoController extends Controller {
         empCod.setText(Integer.toString(_employee.getCod()));
         empName.setText(_employee.getName());
         empLastname.setText(_employee.getLastName());
+
+        try{
+            List<EmpLineDTO> stateList = _employee.getEmpLinesDTO();
+
+            if(stateList.size() == 0){ return;}
+
+            EmpLineDTO lastState = stateList.get(stateList.size() - 1);
+            if(lastState.getDateOut() == null){
+                state.setStyle("-fx-background-color: #00ff00");
+            }
+        }catch (Exception e) {
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+        }
     }
 }

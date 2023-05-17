@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EmpLineDAO implements iDAOdto<EmpLineDTO, Employee>{
     /**
@@ -35,6 +37,7 @@ public class EmpLineDAO implements iDAOdto<EmpLineDTO, Employee>{
     public EmpLineDAO(){
         this.conn= ConnectionMySQL.getConnect();
     }
+    private Logger logger = Logger.getLogger(String.valueOf(this.getClass()));
 
     /**
      * Method to find all EmpLineDTO(relation to Line) to the database by employee
@@ -87,8 +90,8 @@ public class EmpLineDAO implements iDAOdto<EmpLineDTO, Employee>{
                     }
                 }
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                throw new RuntimeException(e);
+                logger.log(Level.SEVERE, e.getMessage());
+
             }
         }
         return result;

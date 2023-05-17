@@ -1,11 +1,10 @@
-package com.elcheno.trues;
+package com.elcheno.trues.controller;
 
 import com.elcheno.trues.controller.Controller;
+import com.elcheno.trues.controller.EmployeeController;
 import com.elcheno.trues.model.domain.Employee;
 import com.elcheno.trues.model.dto.EmployeeInfoDTO;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -57,7 +56,7 @@ public class EmployeeUpdateController extends Controller {
         }
 
         if (!isCodFieldValid()) {
-            alertInformation(Alert.AlertType.INFORMATION, "Error", "Employee cannot be saved, check fields");
+            alertInformation(Alert.AlertType.INFORMATION, "Error", "Employee cannot be updated, check fields");
             loadField();
             return;
         }
@@ -67,6 +66,8 @@ public class EmployeeUpdateController extends Controller {
         _employee.setDni(aux.getDni());
         _employee.setName(aux.getName());
         _employee.setLastName(aux.getLastName());
+
+        alertInformation(Alert.AlertType.INFORMATION, "Update Employee", "Employee has been updated correctly");
 
         Stage stage = (Stage) this.btnUpdate.getScene().getWindow();
         stage.close();

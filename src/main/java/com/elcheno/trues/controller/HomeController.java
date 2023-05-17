@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -45,7 +46,6 @@ public class HomeController extends Controller {
     private Label txtNLine, txtEmployee, txtLine, txtProduct, txtEmpName, txtEmpDni, txtEmpLastname, txtProdCod, txtProdDesc;
 
     private double xOffset = 0, yOffset = 0;
-    private Logger logger;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -86,8 +86,7 @@ public class HomeController extends Controller {
                 txtLine.setText(Integer.toString(lineService.getAll().size()));
 
             } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                exception(e.getMessage());
+                log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
             }
         }
@@ -100,8 +99,7 @@ public class HomeController extends Controller {
                 txtEmployee.setText(Integer.toString(empLineService.getByLine(_line.getId()).size()));
 
             } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                exception(e.getMessage());
+                log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
             }
         }
@@ -110,14 +108,7 @@ public class HomeController extends Controller {
     @FXML
     private void reloadNProduct(){
         if(_line != null){
-            try {
-                txtProduct.setText(Integer.toString(productService.getByIdLine(_line.getId()).size()));
-
-            } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                exception(e.getMessage());
-
-            }
+            txtProduct.setText(Integer.toString(productService.getByIdLine(_line.getId()).size()));
         }
     }
 
@@ -132,8 +123,7 @@ public class HomeController extends Controller {
                 }
 
             } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                exception(e.getMessage());
+                log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
             }
         }
@@ -150,8 +140,7 @@ public class HomeController extends Controller {
                     txtEmpLastname.setText(employeeList.get(employeeList.size()-1).getLastName());
                 }
             } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                exception(e.getMessage());
+                log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
             }
         }
@@ -159,6 +148,16 @@ public class HomeController extends Controller {
 
     @FXML
     private void config(){
+        String file = "appConfig";
+        try {
+            Parent root = loadFXML(file);
+            createModal(root);
 
+            reloadInfo();
+
+        } catch (IOException e) {
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
+        }
     }
 }

@@ -38,7 +38,7 @@ public class Employee extends Person{
     public List<EmpLineDTO> getEmpLinesDTO() {
         if(empLinesDTO == null){
             EmployeeService employeeService = new EmployeeService();
-            employeeService.getAllEmpLinesDTO(this);
+            empLinesDTO = employeeService.getAllEmpLinesDTO(this);
         }
         return empLinesDTO;
     }

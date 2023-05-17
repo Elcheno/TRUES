@@ -218,3 +218,50 @@
     -fx-cursor: hand;
 }
 
+.btnSaveConfig{
+    -fx-background-radius: 100px;
+    -fx-background-image: url("../img/Icon-saveConfig.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.btnSaveConfig:hover{
+    -fx-background-color: #54c72d;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.btnCancelConfig {
+    -fx-background-radius: 100px;
+    -fx-background-image: url("../img/Icon-cancelConfig.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.btnCancelConfig:hover{
+    -fx-background-color: #a80000;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.state{
+    -fx-background-color: #a80000;
+    -fx-background-radius: 100px;
+}
+
+.table{
+    -fx-background-radius: 15px;
+}
+
+.table .column-header{
+    -fx-background-color: #017D9E;
+    -fx-pref-height: 30px;
+}
+
+.table .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+

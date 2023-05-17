@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProductDAO implements iDAO<Product>{
     /**
@@ -28,6 +30,7 @@ public class ProductDAO implements iDAO<Product>{
 
     private Connection conn; //CONNECTOR TO THE DATABASE
     private LineService lineService; //CONNECTOR TO THE LINE SERVICE
+    private Logger logger = Logger.getLogger(String.valueOf(this.getClass()));
 
     //CONSTRUCT
     public ProductDAO(Connection conn) {
@@ -94,7 +97,7 @@ public class ProductDAO implements iDAO<Product>{
      * @return List of products
      * @throws SQLException
      */
-    public List<Product> findByIdLine(int id) throws SQLException {
+    public List<Product> findByIdLine(int id) {
         List<Product> result = new ArrayList<>();
         if(id>0){
             try(PreparedStatement pst = this.conn.prepareStatement(FINDBYIDLINE)){
@@ -110,6 +113,8 @@ public class ProductDAO implements iDAO<Product>{
                         result.add(aux);
                     }
                 }
+            } catch (SQLException e) {
+                logger.log(Level.INFO, e.getMessage());
             }
         }
         return result;
