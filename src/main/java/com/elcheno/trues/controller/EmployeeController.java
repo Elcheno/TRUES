@@ -1,6 +1,5 @@
-package com.elcheno.trues;
+package com.elcheno.trues.controller;
 
-import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Employee;
 import com.elcheno.trues.model.domain.Line;
 import com.elcheno.trues.model.dto.EmployeeInfoDTO;
@@ -21,7 +20,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EmployeeController extends Controller {
@@ -37,7 +35,6 @@ public class EmployeeController extends Controller {
     @FXML
     private Label txtEmpTotal, txtEmpToday, txtNLine;
 
-    private Logger logger;
     private double xOffset = 0, yOffset = 0;
     private Line _line; // the line that is being worked on
     private ObservableList<Employee> employeeList;
@@ -92,8 +89,8 @@ public class EmployeeController extends Controller {
             table.refresh();
 
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
 
         }
     }
@@ -106,8 +103,8 @@ public class EmployeeController extends Controller {
             txtEmpTotal.setText(Integer.toString(aux.size()));
 
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
 
         }
     }
@@ -120,8 +117,8 @@ public class EmployeeController extends Controller {
             txtEmpToday.setText(Integer.toString(aux.size()));
 
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
 
         }
     }
@@ -153,8 +150,7 @@ public class EmployeeController extends Controller {
             reloadInfo();
 
         } catch (IOException | SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
         }
     }
@@ -172,8 +168,7 @@ public class EmployeeController extends Controller {
             reloadInfo();
 
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
         }
     }
@@ -190,8 +185,7 @@ public class EmployeeController extends Controller {
             createModal(root);
 
         } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
         }
     }
@@ -217,8 +211,7 @@ public class EmployeeController extends Controller {
             }
 
         } catch (IOException | SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
         }
     }

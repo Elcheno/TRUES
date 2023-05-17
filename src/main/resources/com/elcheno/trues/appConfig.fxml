@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="bodyModal" stylesheets="@style/styleHome.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elcheno.trues.controller.AppConfigController">
+    <children>
+        <VBox alignment="CENTER" layoutY="43.0" prefHeight="360.0" prefWidth="304.0">
+            <children>
+                <Text fill="#e3fdfd" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="paneSubTitle" text="CONFIGURATION" wrappingWidth="151.953125">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="25.0" />
+                    </VBox.margin>
+                </Text>
+                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="273.0" prefWidth="248.0">
+                    <children>
+                        <Pane prefHeight="273.0" prefWidth="283.0" styleClass="pane">
+                            <children>
+                                <VBox alignment="TOP_CENTER" layoutX="11.0" layoutY="11.0" prefHeight="260.0" prefWidth="222.0">
+                                    <children>
+                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                    <children>
+                                                        <Text fill="#005a5a" strokeType="OUTSIDE" strokeWidth="0.0" text="LINE">
+                                                            <font>
+                                                                <Font name="System Bold" size="14.0" />
+                                                            </font>
+                                                        </Text>
+                                                    </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                    <children>
+                                                        <ComboBox fx:id="comboBoxLines" prefWidth="150.0" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Text fill="#005a5a" strokeType="OUTSIDE" strokeWidth="0.0" text="LANGUAJE">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <ComboBox fx:id="comboBoxLanguaje" disable="true" prefWidth="150.0" promptText="English" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                                        <HBox alignment="CENTER" prefHeight="108.0" prefWidth="222.0">
+                                            <children>
+                                                <VBox alignment="CENTER" prefHeight="107.0" prefWidth="100.0">
+                                                    <children>
+                                                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#save" prefHeight="40.0" prefWidth="40.0">
+                                                            <styleClass>
+                                                                <String fx:value="btnNav" />
+                                                                <String fx:value="btnSaveConfig" />
+                                                            </styleClass>
+                                                        </Button>
+                                                    </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="107.0" prefWidth="100.0">
+                                                    <children>
+                                                        <Button mnemonicParsing="false" onAction="#closeWindows" prefHeight="40.0" prefWidth="40.0">
+                                                            <styleClass>
+                                                                <String fx:value="btnNav" />
+                                                                <String fx:value="btnCancelConfig" />
+                                                            </styleClass>
+                                                        </Button>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <Pane fx:id="navbar" layoutX="-4.0" prefHeight="44.0" prefWidth="308.0" styleClass="paneNavTop" stylesheets="@style/styleHome.css">
+            <children>
+                <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="68.0" prefWidth="300.0">
+                    <children>
+                        <Button fx:id="btnMinWindow" mnemonicParsing="false" onAction="#minimizeWindows" prefHeight="36.0" prefWidth="26.0" styleClass="btnMin" stylesheets="@style/styleHome.css" text="―">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="7.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnExit" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#closeWindows" prefHeight="31.0" prefWidth="26.0" styleClass="btnExit" text="X">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="7.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="25.0" left="10.0" right="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

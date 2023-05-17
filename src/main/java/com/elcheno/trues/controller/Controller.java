@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class Controller implements Initializable {
 
@@ -119,7 +121,8 @@ public abstract class Controller implements Initializable {
         stage.showAndWait();
     }
 
-    public void exception(String bar) {
-        throw new RuntimeException(bar);
+
+    public void log(Logger logger, String msg){
+        logger.log(Level.SEVERE, msg);
     }
 }

@@ -53,12 +53,8 @@ public class Line {
     }
     public List<Product> getProducts() {
         if(products == null){
-            try {
-                ProductService productService = new ProductService();
-                products = productService.getByIdLine(id);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            ProductService productService = new ProductService();
+            products = productService.getByIdLine(id);
         }
         return products;
     }

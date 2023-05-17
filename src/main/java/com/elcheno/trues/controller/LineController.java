@@ -1,4 +1,4 @@
-package com.elcheno.trues;
+package com.elcheno.trues.controller;
 
 import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Employee;
@@ -11,7 +11,6 @@ import com.elcheno.trues.model.service.ProductService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -21,7 +20,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LineController extends Controller {
@@ -46,7 +44,6 @@ public class LineController extends Controller {
     private double xOffset = 0, yOffset = 0;
     private ObservableList<Employee> employeeWorkList;
     private Line _line; // the line that is being worked on
-    private Logger logger;
 
     private final EmpLineService empLineService = new EmpLineService(); // the service to the EmpLine Class
     private final ProductService productService = new ProductService(); // the service to the Product Class
@@ -87,8 +84,8 @@ public class LineController extends Controller {
             try {
                 txtEmployee.setText(Integer.toString(empLineService.getByLine(_line.getId()).size()));
             } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                exception(e.getMessage());
+                log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
             }
         }
     }
@@ -96,12 +93,7 @@ public class LineController extends Controller {
     @FXML
     public void reloadNProduct(){
         if(_line != null){
-            try {
-                txtProduct.setText(Integer.toString(productService.getByIdLine(_line.getId()).size()));
-            } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                exception(e.getMessage());
-            }
+            txtProduct.setText(Integer.toString(productService.getByIdLine(_line.getId()).size()));
         }
     }
 
@@ -134,8 +126,7 @@ public class LineController extends Controller {
             reloadInfo();
 
         } catch (SQLException | NumberFormatException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
         }
     }
@@ -147,8 +138,7 @@ public class LineController extends Controller {
             this.table.setItems(employeeWorkList);
 
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
         }
 

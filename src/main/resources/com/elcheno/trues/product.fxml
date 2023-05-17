@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1000.0" styleClass="body" stylesheets="@style/styleHome.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elcheno.trues.ProductController">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" styleClass="body" stylesheets="@style/styleHome.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elcheno.trues.controller.ProductController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="227.0" layoutY="41.0" prefHeight="711.0" prefWidth="790.0">
          <children>

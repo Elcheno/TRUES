@@ -28,7 +28,7 @@ public class ProductService {
         return productDAO.findById(id);
     }
 
-    public List<Product> getByIdLine(int idLine) throws SQLException {
+    public List<Product> getByIdLine(int idLine) {
         return productDAO.findByIdLine(idLine);
     }
 

@@ -1,12 +1,10 @@
-package com.elcheno.trues;
+package com.elcheno.trues.controller;
 
 import com.elcheno.trues.controller.Controller;
+import com.elcheno.trues.controller.ProductController;
 import com.elcheno.trues.model.domain.Product;
 import com.elcheno.trues.model.dto.ProductInfoDTO;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;

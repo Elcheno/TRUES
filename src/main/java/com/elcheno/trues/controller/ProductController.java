@@ -1,6 +1,5 @@
-package com.elcheno.trues;
+package com.elcheno.trues.controller;
 
-import com.elcheno.trues.controller.Controller;
 import com.elcheno.trues.model.domain.Line;
 import com.elcheno.trues.model.domain.Product;
 import com.elcheno.trues.model.dto.LineDTO;
@@ -21,7 +20,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProductController extends Controller {
@@ -40,7 +38,6 @@ public class ProductController extends Controller {
     private double xOffset = 0, yOffset = 0;
     private Line _line; // the line that is being worked on
     private ObservableList<Product> productsList;
-    private Logger logger;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -81,7 +78,7 @@ public class ProductController extends Controller {
 
     @FXML
     private void saveProduct(ActionEvent event) {
-        String file = "productSave";
+        String file = "productSaved";
         try {
             Parent root = loadFXML(file);
             ProductSaveController controller = (ProductSaveController) getController();
@@ -97,8 +94,7 @@ public class ProductController extends Controller {
             reloadInfo();
 
         } catch (IOException | SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
 
         }
     }
@@ -129,8 +125,8 @@ public class ProductController extends Controller {
                 }
             }
         } catch (IOException | SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
         }
     }
 
@@ -144,8 +140,8 @@ public class ProductController extends Controller {
             createModal(root);
 
         } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
         }
     }
 
@@ -161,8 +157,8 @@ public class ProductController extends Controller {
                     reloadInfo();
                 }
             } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                exception(e.getMessage());
+                log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
             }
         }
     }
@@ -178,30 +174,18 @@ public class ProductController extends Controller {
     @FXML
     public void reloadTable(){
         ProductService productService = new ProductService();
-        try {
             productsList = FXCollections.observableArrayList(productService.getByIdLine(_line.getId()));
             this.table.setItems(productsList);
             table.refresh();
-
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
-        }
-
     }
 
     @FXML
     public void reloadNTotal(){
         ProductService productService = new ProductService();
-        try {
-            List<Product> aux = productService.getByIdLine(_line.getId());
-            if(aux!=null){
-                txtProductTotal.setText(Integer.toString(aux.size()));
-            }
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+        List<Product> aux = productService.getByIdLine(_line.getId());
 
+        if(aux!=null){
+            txtProductTotal.setText(Integer.toString(aux.size()));
         }
 
     }
@@ -215,8 +199,8 @@ public class ProductController extends Controller {
                 txtProductToday.setText(Integer.toString(aux.size()));
             }
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-            exception(e.getMessage());
+            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());
+
         }
     }
 }

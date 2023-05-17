@@ -4,6 +4,8 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -14,6 +16,7 @@ public class ConnectionMySQL {
     private String file = "conexion.xml";
     private static ConnectionMySQL _newInstance;
     private static Connection con;
+    private Logger logger = Logger.getLogger(String.valueOf(this.getClass()));
 
     private  ConnectionMySQL() {
         ConnectionData dc = loadXML();
@@ -23,7 +26,8 @@ public class ConnectionMySQL {
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             con = null;
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.getMessage());
+
         }
     }
 
@@ -48,8 +52,8 @@ public class ConnectionMySQL {
             ConnectionData newR = (ConnectionData) jaxbUnmarshaller.unmarshal(new File(file));
             con = newR;
         } catch (JAXBException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.getMessage());
+
         }
         return con;
     }
