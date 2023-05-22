@@ -1,0 +1,4 @@
+--patch-module
+com.elcheno.trues=_
+--add-reads
+com.elcheno.trues=ALL-UNNAMED
