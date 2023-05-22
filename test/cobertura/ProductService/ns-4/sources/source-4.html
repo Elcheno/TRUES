@@ -1,0 +1,171 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LineEmpDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.elcheno.trues.model.dao</a>
+</div>
+
+<h1>Coverage Summary for Class: LineEmpDAO (com.elcheno.trues.model.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LineEmpDAO</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.elcheno.trues.model.dao;
+&nbsp;
+&nbsp;import com.elcheno.trues.model.connections.ConnectionMySQL;
+&nbsp;import com.elcheno.trues.model.dto.LineEmpDTO;
+&nbsp;
+&nbsp;import com.elcheno.trues.model.domain.Line;
+&nbsp;import com.elcheno.trues.model.service.EmployeeService;
+&nbsp;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.PreparedStatement;
+&nbsp;import java.sql.ResultSet;
+&nbsp;import java.sql.SQLException;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public class LineEmpDAO implements iDAOdto&lt;LineEmpDTO, Line&gt; {
+&nbsp;    /**
+&nbsp;     * LineEmpDAO Class
+&nbsp;     * @Author Elcheno
+&nbsp;     */
+&nbsp;
+&nbsp;    private final static String FINDALL = &quot;SELECT id_emp, _date, date_in, date_out FROM line_emp WHERE id_line = ?;&quot;;
+&nbsp;
+&nbsp;    private Connection conn;//CONNECTION TO DATABASE
+&nbsp;    //CONSTRUCT
+<b class="nc">&nbsp;    public LineEmpDAO(Connection conn){</b>
+<b class="nc">&nbsp;        this.conn = conn;</b>
+&nbsp;    }
+<b class="nc">&nbsp;    public LineEmpDAO(){</b>
+<b class="nc">&nbsp;        this.conn = ConnectionMySQL.getConnect();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Find all LineEmpDTO by Line
+&nbsp;     * @param entity Line
+&nbsp;     * @return List&lt;LineEmpDTO&gt;
+&nbsp;     * @throws SQLException
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public List&lt;LineEmpDTO&gt; findAll(Line entity) throws SQLException {
+<b class="nc">&nbsp;        List&lt;LineEmpDTO&gt; result = null;</b>
+<b class="nc">&nbsp;        if(entity != null){</b>
+<b class="nc">&nbsp;            try(PreparedStatement pst = this.conn.prepareStatement(FINDALL)){</b>
+<b class="nc">&nbsp;                pst.setInt(1, entity.getId());</b>
+<b class="nc">&nbsp;                try(ResultSet res = pst.executeQuery()){</b>
+<b class="nc">&nbsp;                    EmployeeService employeeService = new EmployeeService();</b>
+<b class="nc">&nbsp;                    while(res.next()){</b>
+<b class="nc">&nbsp;                        LineEmpDTO lineEmpDTO = new LineEmpDTO();</b>
+<b class="nc">&nbsp;                        lineEmpDTO.setEmployee(employeeService.getById(res.getInt(&quot;id_emp&quot;)));</b>
+<b class="nc">&nbsp;                        lineEmpDTO.setDate(res.getDate(&quot;_date&quot;).toLocalDate());</b>
+<b class="nc">&nbsp;                        lineEmpDTO.setDate_s(res.getTime(&quot;date_in&quot;).toLocalTime());</b>
+<b class="nc">&nbsp;                        lineEmpDTO.setDate_e(res.getTime(&quot;date_out&quot;).toLocalTime());</b>
+<b class="nc">&nbsp;                        result.add(lineEmpDTO);</b>
+<b class="nc">&nbsp;                    }</b>
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean save(LineEmpDTO entityDTO, Line entityLine) throws SQLException {
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void close() throws Exception {
+<b class="nc">&nbsp;    }</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-22 14:38</div>
+</div>
+</body>
+</html>

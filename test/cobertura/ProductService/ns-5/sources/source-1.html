@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Employee</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.elcheno.trues.model.domain</a>
+</div>
+
+<h1>Coverage Summary for Class: Employee (com.elcheno.trues.model.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Employee</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    62,5%
+  </span>
+  <span class="absValue">
+    (5/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    46,7%
+  </span>
+  <span class="absValue">
+    (7/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.elcheno.trues.model.domain;
+&nbsp;
+&nbsp;import com.elcheno.trues.model.dto.EmpLineDTO;
+&nbsp;import com.elcheno.trues.model.service.EmpLineService;
+&nbsp;import com.elcheno.trues.model.service.EmployeeService;
+&nbsp;
+&nbsp;import java.sql.SQLException;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class Employee extends Person{
+&nbsp;    /**
+&nbsp;     * Employee class
+&nbsp;     * @autor Elcheno
+&nbsp;     */
+&nbsp;
+&nbsp;    private int cod;
+&nbsp;    private List&lt;EmpLineDTO&gt; empLinesDTO;
+&nbsp;
+&nbsp;    //CONSTRUCT
+&nbsp;    public Employee(int cod, String dni, String name, String lastName){
+<b class="fc">&nbsp;        super(dni, name, lastName);</b>
+<b class="fc">&nbsp;        this.cod = cod;</b>
+<b class="fc">&nbsp;        this.empLinesDTO = null;</b>
+&nbsp;    }
+&nbsp;    public Employee(){
+<b class="fc">&nbsp;        this(0, &quot;&quot;, &quot;&quot;, &quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //GETTER AND SETTER
+&nbsp;    public int getCod() {
+<b class="fc">&nbsp;        return cod;</b>
+&nbsp;    }
+&nbsp;    public void setCod(int cod) {
+<b class="fc">&nbsp;        this.cod = cod;</b>
+&nbsp;    }
+&nbsp;    public List&lt;EmpLineDTO&gt; getEmpLinesDTO() {
+<b class="nc">&nbsp;        if(empLinesDTO == null){</b>
+<b class="nc">&nbsp;            EmployeeService employeeService = new EmployeeService();</b>
+<b class="nc">&nbsp;            empLinesDTO = employeeService.getAllEmpLinesDTO(this);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return empLinesDTO;</b>
+&nbsp;    }
+&nbsp;    public void setEmpLinesDTO(List&lt;EmpLineDTO&gt; empLinesDTO) {
+<b class="fc">&nbsp;        this.empLinesDTO = empLinesDTO;</b>
+&nbsp;    }
+&nbsp;    public void addEmpLinesDTO(EmpLineDTO empLineDTO){
+<b class="nc">&nbsp;        if(!empLinesDTO.contains(empLineDTO)){</b>
+<b class="nc">&nbsp;            this.empLinesDTO.add(empLineDTO);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    //TOSTRING
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Employee{&quot; +</b>
+&nbsp;                &quot;cod=&quot; + cod +
+<b class="nc">&nbsp;                super.toString() +</b>
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-22 14:38</div>
+</div>
+</body>
+</html>

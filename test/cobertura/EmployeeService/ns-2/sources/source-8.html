@@ -1,0 +1,257 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LineController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.elcheno.trues.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: LineController (com.elcheno.trues.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LineController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/57)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.elcheno.trues.controller;
+&nbsp;
+&nbsp;import com.elcheno.trues.controller.Controller;
+&nbsp;import com.elcheno.trues.model.domain.Employee;
+&nbsp;import com.elcheno.trues.model.domain.Line;
+&nbsp;import com.elcheno.trues.model.dto.EmpLineDTO;
+&nbsp;import com.elcheno.trues.model.dto.LineDTO;
+&nbsp;import com.elcheno.trues.model.service.EmpLineService;
+&nbsp;import com.elcheno.trues.model.service.EmployeeService;
+&nbsp;import com.elcheno.trues.model.service.ProductService;
+&nbsp;import javafx.collections.FXCollections;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.control.*;
+&nbsp;import javafx.scene.control.cell.PropertyValueFactory;
+&nbsp;import javafx.scene.layout.Pane;
+&nbsp;import javafx.stage.Stage;
+&nbsp;import java.net.URL;
+&nbsp;import java.sql.SQLException;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.LocalTime;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;import java.util.logging.Logger;
+&nbsp;
+<b class="nc">&nbsp;public class LineController extends Controller {</b>
+&nbsp;    /**
+&nbsp;     * This is the controller for the home page
+&nbsp;     * @author Elcheno
+&nbsp;     */
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Pane navbar;
+&nbsp;    @FXML
+&nbsp;    private Button btnExit, btnMinWindow, btnRefresh, btnHomeView, btnEmpLine;
+&nbsp;    @FXML
+&nbsp;    private TableView&lt;Employee&gt; table;
+&nbsp;    @FXML
+&nbsp;    private TableColumn colCod, colName, colLastname;
+&nbsp;    @FXML
+&nbsp;    private TextField fieldTxtEmp;
+&nbsp;    @FXML
+&nbsp;    private Label txtNLine, txtEmployee, txtProduct;
+&nbsp;
+<b class="nc">&nbsp;    private double xOffset = 0, yOffset = 0;</b>
+&nbsp;    private ObservableList&lt;Employee&gt; employeeWorkList;
+&nbsp;    private Line _line; // the line that is being worked on
+&nbsp;
+<b class="nc">&nbsp;    private final EmpLineService empLineService = new EmpLineService(); // the service to the EmpLine Class</b>
+<b class="nc">&nbsp;    private final ProductService productService = new ProductService(); // the service to the Product Class</b>
+<b class="nc">&nbsp;    private final EmployeeService employeeService = new EmployeeService(); // the service to the Employee Class</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc">&nbsp;        navbar.setOnMousePressed(event -&gt; {</b>
+<b class="nc">&nbsp;            xOffset = event.getSceneX();</b>
+<b class="nc">&nbsp;            yOffset = event.getSceneY();</b>
+&nbsp;        });
+<b class="nc">&nbsp;        navbar.setOnMouseDragged(event -&gt; {</b>
+<b class="nc">&nbsp;            Stage stage = (Stage) navbar.getScene().getWindow();</b>
+<b class="nc">&nbsp;            stage.setX(event.getScreenX() - xOffset);</b>
+<b class="nc">&nbsp;            stage.setY(event.getScreenY() - yOffset);</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        employeeWorkList = FXCollections.observableArrayList();</b>
+<b class="nc">&nbsp;        this.colCod.setCellValueFactory(new PropertyValueFactory(&quot;cod&quot;));</b>
+<b class="nc">&nbsp;        this.colName.setCellValueFactory(new PropertyValueFactory(&quot;name&quot;));</b>
+<b class="nc">&nbsp;        this.colLastname.setCellValueFactory(new PropertyValueFactory(&quot;lastName&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        reloadInfo();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void reloadInfo(){
+<b class="nc">&nbsp;        reloadLine();</b>
+<b class="nc">&nbsp;        reloadTable();</b>
+<b class="nc">&nbsp;        reloadNEmployee();</b>
+<b class="nc">&nbsp;        reloadNProduct();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void reloadNEmployee(){
+<b class="nc">&nbsp;        if(_line != null){</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                txtEmployee.setText(Integer.toString(empLineService.getByLine(_line.getId()).size()));</b>
+<b class="nc">&nbsp;            } catch (SQLException e) {</b>
+<b class="nc">&nbsp;                log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());</b>
+&nbsp;
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void reloadNProduct(){
+<b class="nc">&nbsp;        if(_line != null){</b>
+<b class="nc">&nbsp;            txtProduct.setText(Integer.toString(productService.getByIdLine(_line.getId()).size()));</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void addEmployeeLine(){
+&nbsp;        try {
+<b class="nc">&nbsp;            if(fieldTxtEmp.getText().isEmpty() || !fieldTxtEmp.getText().matches(&quot;\\d+&quot;)){</b>
+<b class="nc">&nbsp;                fieldTxtEmp.setText(&quot;&quot;);</b>
+&nbsp;                return;
+&nbsp;            }
+<b class="nc">&nbsp;            int cod = Integer.parseInt(fieldTxtEmp.getText());</b>
+<b class="nc">&nbsp;            Employee aux = employeeService.getByCod(cod);</b>
+<b class="nc">&nbsp;            if(employeeWorkList.contains(aux) &amp;&amp; aux != null){</b>
+<b class="nc">&nbsp;                EmpLineDTO empLineDTO = empLineService.getByEmp(aux.getId(), _line.getId());</b>
+<b class="nc">&nbsp;                empLineDTO.setDateOut(LocalTime.now());</b>
+<b class="nc">&nbsp;                if(empLineService.save(empLineDTO, aux)){</b>
+<b class="nc">&nbsp;                    employeeWorkList.remove(aux);</b>
+&nbsp;                }
+<b class="nc">&nbsp;                fieldTxtEmp.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;                reloadInfo();</b>
+&nbsp;                return;
+<b class="nc">&nbsp;            }else if(aux == null){</b>
+<b class="nc">&nbsp;                fieldTxtEmp.setText(&quot;&quot;);</b>
+&nbsp;                return;
+&nbsp;            }
+<b class="nc">&nbsp;            EmpLineDTO empLineDTO = new EmpLineDTO(_line, LocalDate.now(), LocalTime.now(), null);</b>
+<b class="nc">&nbsp;            empLineService.save(empLineDTO, aux);</b>
+<b class="nc">&nbsp;            this.employeeWorkList.add(aux);</b>
+<b class="nc">&nbsp;            fieldTxtEmp.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            reloadInfo();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (SQLException | NumberFormatException e) {</b>
+<b class="nc">&nbsp;            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());</b>
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void reloadTable(){
+&nbsp;        try {
+<b class="nc">&nbsp;            employeeWorkList = FXCollections.observableArrayList(empLineService.getByLine(_line.getId()));</b>
+<b class="nc">&nbsp;            this.table.setItems(employeeWorkList);</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (SQLException e) {</b>
+<b class="nc">&nbsp;            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());</b>
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void reloadLine(){
+<b class="nc">&nbsp;        _line = LineDTO.getLine();</b>
+<b class="nc">&nbsp;        if(_line != null){</b>
+<b class="nc">&nbsp;            txtNLine.setText(Integer.toString(_line.getId()));</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-22 14:33</div>
+</div>
+</body>
+</html>

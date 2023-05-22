@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ProductUpdateController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.elcheno.trues.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: ProductUpdateController (com.elcheno.trues.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProductUpdateController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/25)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.elcheno.trues.controller;
+&nbsp;
+&nbsp;import com.elcheno.trues.controller.Controller;
+&nbsp;import com.elcheno.trues.controller.ProductController;
+&nbsp;import com.elcheno.trues.model.domain.Product;
+&nbsp;import com.elcheno.trues.model.dto.ProductInfoDTO;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.control.Alert;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import javafx.scene.control.Label;
+&nbsp;import javafx.scene.control.TextField;
+&nbsp;import javafx.scene.layout.Pane;
+&nbsp;import javafx.stage.Stage;
+&nbsp;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;
+<b class="nc">&nbsp;public class ProductUpdateController extends Controller {</b>
+&nbsp;    /**
+&nbsp;     * This is the controller for the update view(modal) of the product
+&nbsp;     * @see Product
+&nbsp;     * @see ProductController
+&nbsp;     * @Author Elcheno
+&nbsp;     */
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Pane navbar;
+&nbsp;    @FXML
+&nbsp;    private Button btnUpdate;
+&nbsp;    @FXML
+&nbsp;    private TextField descField;
+&nbsp;    @FXML
+&nbsp;    private Label txtCod;
+&nbsp;
+&nbsp;    private Product _product;
+<b class="nc">&nbsp;    private double xOffset = 0, yOffset = 0;</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc">&nbsp;        navbar.setOnMousePressed(event -&gt; {</b>
+<b class="nc">&nbsp;            xOffset = event.getSceneX();</b>
+<b class="nc">&nbsp;            yOffset = event.getSceneY();</b>
+&nbsp;        });
+<b class="nc">&nbsp;        navbar.setOnMouseDragged(event -&gt; {</b>
+<b class="nc">&nbsp;            Stage stage = (Stage) navbar.getScene().getWindow();</b>
+<b class="nc">&nbsp;            stage.setX(event.getScreenX() - xOffset);</b>
+<b class="nc">&nbsp;            stage.setY(event.getScreenY() - yOffset);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        loadTextField();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void update() {
+<b class="nc">&nbsp;        String desc = descField.getText();</b>
+<b class="nc">&nbsp;        if (desc.isEmpty() || desc.equals(_product.getDescription())) {</b>
+<b class="nc">&nbsp;            alertInformation(Alert.AlertType.INFORMATION, &quot;Error&quot;, &quot;The product has not changed&quot;);</b>
+<b class="nc">&nbsp;            loadTextField();</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="nc">&nbsp;        Product aux = new Product(_product.getCod(), desc, _product.getLine(), _product.getDate());</b>
+<b class="nc">&nbsp;        aux.setId(_product.getId());</b>
+<b class="nc">&nbsp;        _product = aux;</b>
+<b class="nc">&nbsp;        alertInformation(Alert.AlertType.INFORMATION, &quot;Updated product&quot;, &quot;Product updated successfully&quot;);</b>
+<b class="nc">&nbsp;        Stage stage = (Stage) this.btnUpdate.getScene().getWindow();</b>
+<b class="nc">&nbsp;        stage.close();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void loadTextField(){
+<b class="nc">&nbsp;        if(ProductInfoDTO.getProduct() != null){</b>
+<b class="nc">&nbsp;            this._product = ProductInfoDTO.getProduct();</b>
+<b class="nc">&nbsp;            descField.setText(_product.getDescription());</b>
+<b class="nc">&nbsp;            txtCod.setText(Integer.toString(_product.getCod()));</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public Product getProduct(){
+<b class="nc">&nbsp;        return _product;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-22 14:38</div>
+</div>
+</body>
+</html>

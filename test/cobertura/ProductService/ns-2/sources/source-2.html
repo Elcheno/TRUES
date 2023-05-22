@@ -1,0 +1,231 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Controller</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.elcheno.trues.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: Controller (com.elcheno.trues.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Controller</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/51)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.elcheno.trues.controller;
+&nbsp;
+&nbsp;import com.elcheno.trues.App;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.FXMLLoader;
+&nbsp;import javafx.fxml.Initializable;
+&nbsp;import javafx.scene.Node;
+&nbsp;import javafx.scene.Parent;
+&nbsp;import javafx.scene.Scene;
+&nbsp;import javafx.scene.control.Alert;
+&nbsp;import javafx.scene.control.ButtonType;
+&nbsp;import javafx.stage.Modality;
+&nbsp;import javafx.stage.Stage;
+&nbsp;import javafx.stage.StageStyle;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.Optional;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;import java.util.logging.Level;
+&nbsp;import java.util.logging.Logger;
+&nbsp;
+<b class="nc">&nbsp;public abstract class Controller implements Initializable {</b>
+&nbsp;
+&nbsp;    private Controller _instance;
+&nbsp;
+&nbsp;
+&nbsp;    public abstract void initialize(URL url, ResourceBundle resourceBundle);
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void closeWindows(ActionEvent event) {
+<b class="nc">&nbsp;        Node source = (Node) event.getSource();</b>
+<b class="nc">&nbsp;        Stage stage = (Stage) source.getScene().getWindow();</b>
+<b class="nc">&nbsp;        stage.close();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void minimizeWindows(ActionEvent event) {
+<b class="nc">&nbsp;        Node source = (Node) event.getSource();</b>
+<b class="nc">&nbsp;        Stage stage = (Stage) source.getScene().getWindow();</b>
+<b class="nc">&nbsp;        stage.setIconified(true);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void homeView() {
+&nbsp;        try {
+<b class="nc">&nbsp;            App.setRoot(&quot;home&quot;);</b>
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getMessage());</b>
+<b class="nc">&nbsp;            throw new RuntimeException(e);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void productView() {
+&nbsp;        try {
+<b class="nc">&nbsp;            App.setRoot(&quot;product&quot;);</b>
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getMessage());</b>
+<b class="nc">&nbsp;            throw new RuntimeException(e);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void lineView() {
+&nbsp;        try {
+<b class="nc">&nbsp;            App.setRoot(&quot;line&quot;);</b>
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getMessage());</b>
+<b class="nc">&nbsp;            throw new RuntimeException(e);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void employeeView() {
+&nbsp;        try {
+<b class="nc">&nbsp;            App.setRoot(&quot;employee&quot;);</b>
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getMessage());</b>
+<b class="nc">&nbsp;            throw new RuntimeException(e);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean alertConfirmation(Alert.AlertType alertType, String title, String content) {
+<b class="nc">&nbsp;        Alert alert = new Alert(alertType);</b>
+<b class="nc">&nbsp;        alert.setHeaderText(null);</b>
+<b class="nc">&nbsp;        alert.setTitle(title);</b>
+<b class="nc">&nbsp;        alert.setContentText(content);</b>
+<b class="nc">&nbsp;        Optional&lt;ButtonType&gt; action = alert.showAndWait();</b>
+<b class="nc">&nbsp;        return action.get() == ButtonType.OK;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void alertInformation(Alert.AlertType alertType, String title, String content){
+<b class="nc">&nbsp;        Alert alert = new Alert(alertType);</b>
+<b class="nc">&nbsp;        alert.setHeaderText(null);</b>
+<b class="nc">&nbsp;        alert.setTitle(title);</b>
+<b class="nc">&nbsp;        alert.setContentText(content);</b>
+<b class="nc">&nbsp;        alert.showAndWait();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Parent loadFXML(String fxml) throws IOException {
+<b class="nc">&nbsp;        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + &quot;.fxml&quot;));</b>
+<b class="nc">&nbsp;        Parent root = fxmlLoader.load();</b>
+<b class="nc">&nbsp;        _instance = fxmlLoader.getController();</b>
+<b class="nc">&nbsp;        return root;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Controller getController()throws IOException{
+<b class="nc">&nbsp;        return _instance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void createModal(Parent root){
+<b class="nc">&nbsp;        Scene scene = new Scene(root);</b>
+<b class="nc">&nbsp;        Stage stage = new Stage();</b>
+<b class="nc">&nbsp;        stage.initModality(Modality.APPLICATION_MODAL);</b>
+<b class="nc">&nbsp;        stage.setScene(scene);</b>
+<b class="nc">&nbsp;        stage.setResizable(false);</b>
+<b class="nc">&nbsp;        stage.initStyle(StageStyle.UNDECORATED);</b>
+<b class="nc">&nbsp;        stage.showAndWait();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void log(Logger logger, String msg){
+<b class="nc">&nbsp;        logger.log(Level.SEVERE, msg);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-22 14:38</div>
+</div>
+</body>
+</html>
