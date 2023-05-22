@@ -31,5 +31,5 @@ date_in TIME(0),
 date_out TIME(0),
 FOREIGN KEY (id_emp) REFERENCES employee(id) ON UPDATE NO ACTION ON DELETE CASCADE,
 FOREIGN KEY (id_line) REFERENCES line(id) ON UPDATE NO ACTION ON DELETE CASCADE,
-PRIMARY KEY(id_emp, id_line, _date, date_in, date_out)
+PRIMARY KEY(id_emp, id_line, _date, date_in)
 );

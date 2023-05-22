@@ -16,8 +16,8 @@ public class LineDAO implements iDAO<Line>{
      */
 
     //DECLARATION OF QUERYS FOR THE DATABASE
-    private final static String FINDALL = "SELECT * FROM line";
-    private final static String FINDBYID = "SELECT * FROM line WHERE id = ?";
+    private final static String FINDALL = "SELECT id, _description FROM line";
+    private final static String FINDBYID = "SELECT id, _description FROM line WHERE id = ?";
     private final static String INSERT = "INSERT INTO line (_description) VALUES (?)";
     private final static String UPDATE = "UPDATE line SET _description = ? WHERE id = ?";
     private final static String DELETE = "DELETE FROM line WHERE id = ?";

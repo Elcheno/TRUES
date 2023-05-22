@@ -1,0 +1,173 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > EmployeeInfoController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.elcheno.trues.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: EmployeeInfoController (com.elcheno.trues.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmployeeInfoController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/24)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.elcheno.trues.controller;
+&nbsp;
+&nbsp;import com.elcheno.trues.controller.Controller;
+&nbsp;import com.elcheno.trues.controller.EmployeeController;
+&nbsp;import com.elcheno.trues.model.domain.Employee;
+&nbsp;import com.elcheno.trues.model.dto.EmpLineDTO;
+&nbsp;import com.elcheno.trues.model.dto.EmployeeInfoDTO;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.control.Label;
+&nbsp;import javafx.scene.layout.Pane;
+&nbsp;import javafx.stage.Stage;
+&nbsp;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.List;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;import java.util.logging.Logger;
+&nbsp;
+<b class="nc">&nbsp;public class EmployeeInfoController extends Controller {</b>
+&nbsp;    /**
+&nbsp;     * This class is the controller of the EmployeeInfo view(modal)
+&nbsp;     * @see EmployeeController
+&nbsp;     * @author Elcheno
+&nbsp;     */
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Pane navbar, state;
+&nbsp;    @FXML
+&nbsp;    private Label empDni, empCod, empName, empLastname;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;    private double xOffset = 0, yOffset = 0;</b>
+&nbsp;    private Employee _employee; // the employee that is being worked on
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc">&nbsp;        navbar.setOnMousePressed(event -&gt; {</b>
+<b class="nc">&nbsp;            xOffset = event.getSceneX();</b>
+<b class="nc">&nbsp;            yOffset = event.getSceneY();</b>
+&nbsp;        });
+<b class="nc">&nbsp;        navbar.setOnMouseDragged(event -&gt; {</b>
+<b class="nc">&nbsp;            Stage stage = (Stage) navbar.getScene().getWindow();</b>
+<b class="nc">&nbsp;            stage.setX(event.getScreenX() - xOffset);</b>
+<b class="nc">&nbsp;            stage.setY(event.getScreenY() - yOffset);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        loadField();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void loadField(){
+<b class="nc">&nbsp;        _employee = EmployeeInfoDTO.getEmployee();</b>
+<b class="nc">&nbsp;        if(_employee == null){ return; }</b>
+<b class="nc">&nbsp;        empDni.setText(_employee.getDni());</b>
+<b class="nc">&nbsp;        empCod.setText(Integer.toString(_employee.getCod()));</b>
+<b class="nc">&nbsp;        empName.setText(_employee.getName());</b>
+<b class="nc">&nbsp;        empLastname.setText(_employee.getLastName());</b>
+&nbsp;
+&nbsp;        try{
+<b class="nc">&nbsp;            List&lt;EmpLineDTO&gt; stateList = _employee.getEmpLinesDTO();</b>
+&nbsp;
+<b class="nc">&nbsp;            if(stateList.size() == 0){ return;}</b>
+&nbsp;
+<b class="nc">&nbsp;            EmpLineDTO lastState = stateList.get(stateList.size() - 1);</b>
+<b class="nc">&nbsp;            if(lastState.getDateOut() == null){</b>
+<b class="nc">&nbsp;                state.setStyle(&quot;-fx-background-color: #00ff00&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }catch (Exception e) {</b>
+<b class="nc">&nbsp;            log(Logger.getLogger(String.valueOf(this.getClass())), e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-22 14:38</div>
+</div>
+</body>
+</html>

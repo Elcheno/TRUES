@@ -34,7 +34,6 @@ public class HomeController extends Controller {
 
     private Line _line; // the line that is being worked on
     private LineService lineService = new LineService(); // the service to the Line Class
-    private EmployeeService employeeService = new EmployeeService(); // the service to the Employee Class
     private EmpLineService empLineService = new EmpLineService(); // the service to the EmpLine Class
     private ProductService productService = new ProductService(); // the service to the Product Class
 

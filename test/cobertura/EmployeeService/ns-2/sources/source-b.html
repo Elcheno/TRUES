@@ -1,0 +1,207 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ProductSaveController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.elcheno.trues.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: ProductSaveController (com.elcheno.trues.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProductSaveController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/29)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.elcheno.trues.controller;
+&nbsp;
+&nbsp;import com.elcheno.trues.controller.Controller;
+&nbsp;import com.elcheno.trues.controller.ProductController;
+&nbsp;import com.elcheno.trues.model.domain.Line;
+&nbsp;import com.elcheno.trues.model.domain.Product;
+&nbsp;import com.elcheno.trues.model.dto.LineDTO;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.control.Alert;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import javafx.scene.control.TextField;
+&nbsp;import javafx.scene.layout.Pane;
+&nbsp;import javafx.stage.Stage;
+&nbsp;
+&nbsp;import java.net.URL;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;
+<b class="nc">&nbsp;public class ProductSaveController extends Controller {</b>
+&nbsp;    /**
+&nbsp;     * This is the controller for the save view(modal) of the product
+&nbsp;     * @see Product
+&nbsp;     * @see ProductController
+&nbsp;     * @Author Elcheno
+&nbsp;     */
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button btnExit, btnMinWindow, btnSave;
+&nbsp;    @FXML
+&nbsp;    private Pane navbar;
+&nbsp;    @FXML
+&nbsp;    private TextField codField, descField;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;    private double xOffset = 0, yOffset = 0;</b>
+&nbsp;    private Line _line; // the line that is being worked on
+&nbsp;    private Product _product; // the product to return
+&nbsp;    private ObservableList&lt;Product&gt; _products; // the list of products to return
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc">&nbsp;        navbar.setOnMousePressed(event -&gt; {</b>
+<b class="nc">&nbsp;            xOffset = event.getSceneX();</b>
+<b class="nc">&nbsp;            yOffset = event.getSceneY();</b>
+&nbsp;        });
+<b class="nc">&nbsp;        navbar.setOnMouseDragged(event -&gt; {</b>
+<b class="nc">&nbsp;            Stage stage = (Stage) navbar.getScene().getWindow();</b>
+<b class="nc">&nbsp;            stage.setX(event.getScreenX() - xOffset);</b>
+<b class="nc">&nbsp;            stage.setY(event.getScreenY() - yOffset);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        reloadLine();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void initAttributtes(ObservableList&lt;Product&gt; products){
+<b class="nc">&nbsp;        _products = products;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void save(ActionEvent event) {
+<b class="nc">&nbsp;        String codText = codField.getText();</b>
+<b class="nc">&nbsp;        String descText = descField.getText();</b>
+&nbsp;
+<b class="nc">&nbsp;        if(codText.isEmpty() || descText.isEmpty() || codText.matches(&quot;[a-zA-Z]+&quot;)){</b>
+<b class="nc">&nbsp;            resetField();</b>
+<b class="nc">&nbsp;            alertInformation(Alert.AlertType.INFORMATION, &quot;Error creating product&quot;, &quot;Correctly fill in the fields&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        int cod = Integer.parseInt(codText);</b>
+<b class="nc">&nbsp;        String description = descText;</b>
+<b class="nc">&nbsp;        Product aux = new Product(cod, description, _line, LocalDate.now());</b>
+&nbsp;
+<b class="nc">&nbsp;        if(_products.contains(aux)){</b>
+<b class="nc">&nbsp;            alertInformation(Alert.AlertType.INFORMATION, &quot;Error creating product&quot;, &quot;The product already exists&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        _product = aux;</b>
+<b class="nc">&nbsp;        alertInformation(Alert.AlertType.INFORMATION, &quot;Saved product&quot;, &quot;The product has been saved correctly&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        Stage stage = (Stage) this.btnSave.getScene().getWindow();</b>
+<b class="nc">&nbsp;        stage.close();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void resetField() {
+<b class="nc">&nbsp;        codField.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;        descField.setText(&quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void reloadLine(){
+<b class="nc">&nbsp;        _line = LineDTO.getLine();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Product getProduct(){
+<b class="nc">&nbsp;        return _product;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-22 14:33</div>
+</div>
+</body>
+</html>

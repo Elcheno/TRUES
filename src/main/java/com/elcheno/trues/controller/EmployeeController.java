@@ -35,7 +35,8 @@ public class EmployeeController extends Controller {
     @FXML
     private Label txtEmpTotal, txtEmpToday, txtNLine;
 
-    private double xOffset = 0, yOffset = 0;
+    private double xOffset = 0;
+    private double yOffset = 0;
     private Line _line; // the line that is being worked on
     private ObservableList<Employee> employeeList;
 

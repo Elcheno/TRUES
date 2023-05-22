@@ -1,13 +1,23 @@
 
+e
+java:S1192<"HDefine a constant instead of duplicating this literal "id_line" 4 times.(âñ¯ä8Á¢¹õ‚1
+o
+java:S1192;"MDefine a constant instead of duplicating this literal "_description" 4 times.(€À¾¬ùÿÿÿÿ8Ã¢¹õ‚1
+d
+java:S1192="GDefine a constant instead of duplicating this literal "date_p" 4 times.(¯öİı8Ğ¢¹õ‚1
 
-java:S1186ˆ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(©éÑr8„ÄïÛş0
-b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ŒÂ™Ÿ8‡ÄïÛş0
-b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¶×Íÿ8ˆÄïÛş0
+java:S1186Í"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(©éÑr8„ÄïÛş0
 g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¯ÙâÊüÿÿÿÿ8ˆÄïÛş0
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(µÈŒŠşÿÿÿÿ8ˆÄïÛş0
 g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(×Òâ“øÿÿÿÿ8ˆÄïÛş0
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(³…­şÿÿÿÿ8ˆÄïÛş0
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(é¿Øûıÿÿÿÿ8ù¦¹õ‚1
+a
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÎåµE8ü¦¹õ‚1
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¯ÙâÊüÿÿÿÿ8ˆÄïÛş0
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(×Òâ“øÿÿÿÿ8‚§¹õ‚1
 b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ØÁÃÎ8ˆÄïÛş0
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ØÁÃÎ8ƒ§¹õ‚1

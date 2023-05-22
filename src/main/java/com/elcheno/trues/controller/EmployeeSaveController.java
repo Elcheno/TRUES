@@ -59,7 +59,7 @@ public class EmployeeSaveController extends Controller {
         }
 
         if (!isCodFieldValid()) {
-            alertInformation(Alert.AlertType.INFORMATION, "Error", "Employee cannot be saved, check fields");
+            alertInformation(Alert.AlertType.ERROR, "Error", "Employee cannot be saved, check fields");
             resetField();
             return;
         }

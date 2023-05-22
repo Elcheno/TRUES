@@ -16,9 +16,9 @@ public class EmployeeDAO implements iDAO<Employee>{
      */
 
     //DECLARATION OF QUERYS FOR THE DATABASE
-    private final static String FINDALL = "SELECT * FROM employee";
-    private final static String FINDBYID = "SELECT * FROM employee WHERE id = ?";
-    private final static String FINDBYCOD = "SELECT * FROM employee WHERE cod = ?";
+    private final static String FINDALL = "SELECT id, cod, dni, _name, lastname FROM employee";
+    private final static String FINDBYID = "SELECT id, cod, dni, _name, lastname FROM employee WHERE id = ?";
+    private final static String FINDBYCOD = "SELECT id, cod, dni, _name, lastname FROM employee WHERE cod = ?";
     private final static String INSERT = "INSERT INTO employee (cod, dni, _name, lastname) VALUES (?, ?, ?, ?)";
     private final static String UPDATE = "UPDATE employee SET cod = ?, dni = ?, _name = ?, lastname = ? WHERE id = ?";
     private final static String DELETE = "DELETE FROM employee WHERE id = ?";

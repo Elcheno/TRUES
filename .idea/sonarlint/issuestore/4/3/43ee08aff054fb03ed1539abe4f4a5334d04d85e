@@ -1,25 +1,0 @@
-
-•
-java:S1192"sDefine a constant instead of duplicating this literal "--------------------------------------------------" 3 times.(óÅ¾’şÿÿÿÿ8€‚Øş0
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(«ïû8…‚Øş0
-g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Ä ÷ùÿÿÿÿ8¸‚Øş0
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(Ûİ¦ûÿÿÿÿÿ8»‚Øş0
-U	java:S106"9Replace this use of System.out or System.err by a logger.(ºÕ¬8¼‚Øş0
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8½‚Øş0
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(óÅ¾’şÿÿÿÿ8¾‚Øş0
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(µšÅÿşÿÿÿÿ8Ã‚Øş0
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(üıİ–üÿÿÿÿ8Ä‚Øş0
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8Å‚Øş0
-Z	java:S106-"9Replace this use of System.out or System.err by a logger.(óÅ¾’şÿÿÿÿ8Ç‚Øş0
-]	java:S125""<This block of commented-out lines of code should be removed.(¬êÅ«ıÿÿÿÿ8Ë‚Øş0
-X	java:S125$"<This block of commented-out lines of code should be removed.(™’òş8Ì‚Øş0
-U	java:S1063"9Replace this use of System.out or System.err by a logger.(“ù¶İ8Ğ‚Øş0
-U	java:S1065"9Replace this use of System.out or System.err by a logger.(ıÙ˜€8Ò‚Øş0
-Z	java:S1066"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8Ó‚Øş0
-Z	java:S1069"9Replace this use of System.out or System.err by a logger.(óÅ¾’şÿÿÿÿ8Ô‚Øş0
-U	java:S106?"9Replace this use of System.out or System.err by a logger.(¼˜£¶8û£Øş0
-U	java:S106A"9Replace this use of System.out or System.err by a logger.(”ÿšå8ü£Øş0
-Z	java:S106B"9Replace this use of System.out or System.err by a logger.(ïù¯¯ûÿÿÿÿ8ı£Øş0
-b
-java:S1128"@Remove this unused import 'com.elcheno.trues.model.dao.LineDAO'.(æ¼ìåÿÿÿÿÿ8Ö‚Øş0
