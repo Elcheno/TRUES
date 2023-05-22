@@ -1,0 +1,11 @@
+
+m	java:S116 "XRename this field "_employeeList" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬…÷¢
+h	java:S116!"TRename this field "_employee" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ‡§U
+^
+java:S1659"IDeclare "btnMinWindow" and all following declarations on a separate line.(—£Ý
+[
+java:S1659"EDeclare "codField" and all following declarations on a separate line.(ž°ÿš
+;
+java:S1659"%Declare "yOffset" on a separate line.(ÔžžÃ
+j
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(Íÿë´

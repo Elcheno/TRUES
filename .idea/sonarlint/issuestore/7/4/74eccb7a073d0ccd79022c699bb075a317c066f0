@@ -1,7 +1,5 @@
 
-q	java:S116""PRename this field "_line" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ε€ώÿÿÿÿ8§γξωÿ0
-¤
-java:S1186΅"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ι•Χ‚όÿÿÿÿ8ΝΠ’€1
+q	java:S116#"PRename this field "_line" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ε€ώÿÿÿÿ8§γξωÿ0
 k
 java:S1659+"IDeclare "btnMinWindow" and all following declarations on a separate line.(ΊÒΫΣψÿÿÿÿ8ªγξωÿ0
 j
@@ -10,13 +8,13 @@ B
 java:S1659/"%Declare "yOffset" on a separate line.(ΤΓ8¬γξωÿ0
 N
 java:S1128"2Remove this unused import 'com.elcheno.trues.App'.(Ξ―Ι8Ι‘€1
+i
+java:S1128	"LRemove this unused import 'com.elcheno.trues.model.service.EmployeeService'.(‰ΙΙ8Ωέφ‚1
 W
 java:S1128"5Remove this unused import 'javafx.event.ActionEvent'.(ξ•―Όύÿÿÿÿ8Ι‘€1
 S
 java:S1128"6Remove this unused import 'javafx.fxml.Initializable'.(™ΞωΖ8Ι‘€1
 K
 java:S1128".Remove this unused import 'javafx.scene.Node'.(ΡΦ¬ο8Ι‘€1
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªΊ»Ϊύÿÿÿÿ8Ι‘€1
-U
-java:S1068$"3Remove this unused "employeeService" private field.(Θψαϊÿÿÿÿ8ώγξωÿ0
+Q
+java:S1128"4Remove this unused import 'java.util.logging.Level'.(…µΫ¶8Βάμ‚1

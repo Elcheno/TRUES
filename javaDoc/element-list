@@ -1,0 +1,8 @@
+module:com.elcheno.trues
+com.elcheno.trues
+com.elcheno.trues.controller
+com.elcheno.trues.model.connections
+com.elcheno.trues.model.dao
+com.elcheno.trues.model.domain
+com.elcheno.trues.model.dto
+com.elcheno.trues.model.service

@@ -1,0 +1,14 @@
+
+i	java:S116 "TRename this field "_employee" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ£¹¶
+9
+java:S1659"#Declare "state" on a separate line.(ø¸Ö¾
+Y
+java:S1659"CDeclare "empCod" and all following declarations on a separate line.(ÁÖ‡
+;
+java:S1659"%Declare "yOffset" on a separate line.(ÔÃ
+n
+java:S1450 "XRemove the "_employee" field and declare it as a local variable in the relevant methods.(æ£¹¶
+T
+java:S1155<">Use isEmpty() to check whether the collection is empty or not.(’¥çÂ
+j
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(Íÿë´

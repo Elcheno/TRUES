@@ -135,6 +135,7 @@ public class ProductController extends Controller {
         String file = "productInfo";
         Product aux = selectProduct();
         if(aux==null){ return; }
+        ProductInfoDTO.setProduct(aux);
         try {
             Parent root = loadFXML(file);
             createModal(root);
@@ -146,7 +147,7 @@ public class ProductController extends Controller {
     }
 
     @FXML
-    private void removeProduct(ActionEvent event) throws RuntimeException {
+    private void removeProduct(ActionEvent event) {
         Product product = selectProduct();
         if(product!=null){
             ProductService productService = new ProductService();

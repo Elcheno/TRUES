@@ -20,10 +20,10 @@ public class ProductDAO implements iDAO<Product>{
      * @author Elcheno
      */
 
-    private final static String FINDALL = "SELECT * FROM product";
-    private final static String FINDBYID = "SELECT * FROM product WHERE id = ?";
-    private final static String FINDBYIDLINE = "SELECT * FROM product WHERE id_line = ?";
-    private final static String FINDBYIDLINEDATENOW = "SELECT * FROM product WHERE id_line = ? AND date_p = ?";
+    private final static String FINDALL = "SELECT id, cod, _description, id_line, date_p FROM product";
+    private final static String FINDBYID = "SELECT id, cod, _description, id_line, date_p FROM product WHERE id = ?";
+    private final static String FINDBYIDLINE = "SELECT id, cod, _description, id_line, date_p FROM product WHERE id_line = ?";
+    private final static String FINDBYIDLINEDATENOW = "SELECT id, cod, _description, id_line, date_p FROM product WHERE id_line = ? AND date_p = ?";
     private final static String INSERT = "INSERT INTO product (cod, _description, id_line, date_p) VALUES (?,?,?,?)";
     private final static String UPDATE = "UPDATE product SET cod = ?, _description = ?, id_line = ?, date_p = ? WHERE id = ?";
     private final static String DELETE = "DELETE FROM product WHERE id = ?";

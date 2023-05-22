@@ -3,5 +3,5 @@
     <server>jdbc:mysql://localhost</server>
     <database>TRUES</database>
     <username>root</username>
-    <password>2312</password>
+    <password>root</password>
 </conexion>
