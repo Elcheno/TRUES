@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" styleClass="body" stylesheets="@style/styleHome.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.elcheno.trues.controller.EmployeeController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="227.0" layoutY="41.0" prefHeight="711.0" prefWidth="790.0">
+         <children>
+            <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="700.0">
+               <children>
+                  <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="25.0" prefWidth="33.0" styleClass="btnRefresh" stylesheets="@style/styleHome.css">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="20.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Pane fx:id="navbar" layoutX="-2.0" layoutY="-3.0" prefHeight="44.0" prefWidth="1018.0" styleClass="paneNavTop" stylesheets="@style/styleHome.css">
+         <children>
+            <HBox alignment="CENTER_RIGHT" layoutX="796.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="209.0">
+               <children>
+                  <Button fx:id="btnMinWindow" mnemonicParsing="false" onAction="#minimizeWindows" prefHeight="36.0" prefWidth="26.0" styleClass="btnMin" stylesheets="@style/styleHome.css" text="―">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="7.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnExit" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#closeWindows" prefHeight="31.0" prefWidth="26.0" styleClass="btnExit" text="X">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="7.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane layoutY="40.0" prefHeight="711.0" prefWidth="228.0" styleClass="pane" stylesheets="@style/styleHome.css">
+         <children>
+            <Text fill="#005a5a" layoutX="66.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TRUES">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutY="240.0" prefHeight="288.0" prefWidth="229.0">
+               <children>
+                  <Button fx:id="btnHomeView" mnemonicParsing="false" onAction="#homeView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="HOME" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnLineView" mnemonicParsing="false" onAction="#lineView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="LINES" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnEmpView" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="EMPLOYEES" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnProductView" mnemonicParsing="false" onAction="#productView" prefHeight="44.0" prefWidth="176.0" styleClass="btnNav" stylesheets="@style/styleHome.css" text="PRODUCTS" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" top="30.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="2.0" layoutY="573.0" prefHeight="133.0" prefWidth="220.0">
+               <children>
+                  <Label fx:id="txtNLine" text="/">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LINE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

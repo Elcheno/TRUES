@@ -28,8 +28,6 @@ i
 9src/main/java/com/elcheno/trues/model/dto/LineEmpDTO.java,2\d\2de2c5fcac3a508d9a0481c566a0fef165f20604
 j
 :src/main/java/com/elcheno/trues/controller/Controller.java,c\c\cc83025c61992410a34cdc79aeb1d0349686b5c2
-<
-conexion.xml,c\e\cea450a916b0aacd653f63795bba766a27f71026
 v
 Fsrc/main/java/com/elcheno/trues/controller/EmployeeInfoController.java,f\d\fdb98c6f48ed7c48f8f5f0addbbc4287ed06ed20
 v
@@ -76,5 +74,3 @@ V
 &src/test/java/testEmployeeService.java,3\2\32e4ee0387459e83643bb1f6c476ac815b02d9d0
 U
 %src/test/java/testProductService.java,e\7\e7f5accd50a2cb5696e2f8ef7ac8b5d39f75377a
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
